@@ -1,0 +1,644 @@
+[
+    {
+        "platform_data": {
+            "tasks": [
+                {
+                    "id": 1951,
+                    "job_number": 2950,
+                    "sequence_number": 0,
+                    "type": "PROCESS",
+                    "state": "COMPLETED",
+                    "from_location": "M5",
+                    "to_location": "F1",
+                    "parameter": 4
+                },
+                {
+                    "id": 1952,
+                    "job_number": 2951,
+                    "sequence_number": 2,
+                    "type": "TRANSFER",
+                    "state": "IN_PROGRESS",
+                    "from_location": "M4",
+                    "to_location": "M1",
+                    "parameter": 6
+                }
+            ],
+            "platform_state": "STOPPED",
+            "feeder_machines": [
+                {
+                    "id": "F1",
+                    "current_state": "FEEDING_PART",
+                    "target_state": "RDY"
+                },
+                {
+                    "id": "F2",
+                    "current_state": "MAINTENANCE",
+                    "target_state": "MAINTENANCE"
+                },
+                {
+                    "id": "F3",
+                    "current_state": "FAILURE",
+                    "target_state": "FAILURE"
+                },
+                {
+                    "id": "F4",
+                    "current_state": "MAINTENANCE",
+                    "target_state": "MAINTENANCE"
+                }
+            ],
+            "buffer_area": {
+                "buffer_area_id": "B-001",
+                "buffer_area_state": "PROCESSING",
+                "buffer_slots": [
+                    {
+                        "buffer_area_state": "SLOT_1",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_2",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_3",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_4",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_5",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_6",
+                        "buffer_slot_occupied": "TRUE"
+                    }
+                ]
+            },
+            "machines": [
+                {
+                    "id": "M1",
+                    "state": "PROCESSING",
+                    "progress_counter": 38
+                },
+                {
+                    "id": "M2",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 57
+                },
+                {
+                    "id": "M3",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 36
+                },
+                {
+                    "id": "M4",
+                    "state": "IDLE_FULL",
+                    "progress_counter": 99
+                },
+                {
+                    "id": "M5",
+                    "state": "PROCESSING",
+                    "progress_counter": 34
+                },
+                {
+                    "id": "M6",
+                    "state": "IDLE_FULL",
+                    "progress_counter": 96
+                }
+            ],
+            "logistics": {
+                "current_task": {
+                    "id": 1953,
+                    "job_number": 2952,
+                    "sequence_number": 4,
+                    "type": "PROCESS",
+                    "state": "COMPLETED",
+                    "from_location": "M3",
+                    "to_location": "F1",
+                    "parameter": 7
+                },
+                "previous_task": {
+                    "id": 1954,
+                    "job_number": 2953,
+                    "sequence_number": 3,
+                    "type": "PROCESS",
+                    "state": "IN_PROGRESS",
+                    "from_location": "M5",
+                    "to_location": "M4",
+                    "parameter": 8
+                }
+            }
+        },
+        "confirmed_schedule": null,
+        "timestamp": "2024-10-06 06:25:45.248904"
+    },
+    {
+        "platform_data": {
+            "tasks": [
+                {
+                    "id": 1955,
+                    "job_number": 2954,
+                    "sequence_number": 0,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F1",
+                    "to_location": "F3",
+                    "parameter": 7
+                },
+                {
+                    "id": 1956,
+                    "job_number": 2955,
+                    "sequence_number": 3,
+                    "type": "TRANSFER",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F4",
+                    "to_location": "M1",
+                    "parameter": 2
+                },
+                {
+                    "id": 1957,
+                    "job_number": 2956,
+                    "sequence_number": 4,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F1",
+                    "to_location": "F1",
+                    "parameter": 1
+                },
+                {
+                    "id": 1958,
+                    "job_number": 2957,
+                    "sequence_number": 3,
+                    "type": "TRANSFER",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F4",
+                    "to_location": "M1",
+                    "parameter": 1
+                },
+                {
+                    "id": 1959,
+                    "job_number": 2958,
+                    "sequence_number": 0,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "M3",
+                    "to_location": "M1",
+                    "parameter": 6
+                }
+            ],
+            "platform_state": "MAINTENANCE",
+            "feeder_machines": [
+                {
+                    "id": "F1",
+                    "current_state": "MAINTENANCE",
+                    "target_state": "MAINTENANCE"
+                },
+                {
+                    "id": "F2",
+                    "current_state": "FEEDING_PART",
+                    "target_state": "RDY"
+                },
+                {
+                    "id": "F3",
+                    "current_state": "MAINTENANCE",
+                    "target_state": "MAINTENANCE"
+                },
+                {
+                    "id": "F4",
+                    "current_state": "MAINTENANCE",
+                    "target_state": "MAINTENANCE"
+                }
+            ],
+            "buffer_area": {
+                "buffer_area_id": "B-003",
+                "buffer_area_state": "PROCESSING",
+                "buffer_slots": [
+                    {
+                        "buffer_area_state": "SLOT_1",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_2",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_3",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_4",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_5",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_6",
+                        "buffer_slot_occupied": "TRUE"
+                    }
+                ]
+            },
+            "machines": [
+                {
+                    "id": "M1",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 52
+                },
+                {
+                    "id": "M2",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 0
+                },
+                {
+                    "id": "M3",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 11
+                },
+                {
+                    "id": "M4",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 7
+                },
+                {
+                    "id": "M5",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 7
+                },
+                {
+                    "id": "M6",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 30
+                }
+            ],
+            "logistics": {
+                "current_task": {
+                    "id": 1960,
+                    "job_number": 2959,
+                    "sequence_number": 3,
+                    "type": "TRANSFER",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F1",
+                    "to_location": "M3",
+                    "parameter": 6
+                },
+                "previous_task": {
+                    "id": 1961,
+                    "job_number": 2960,
+                    "sequence_number": 3,
+                    "type": "PROCESS",
+                    "state": "IN_PROGRESS",
+                    "from_location": "M5",
+                    "to_location": "M1",
+                    "parameter": 6
+                }
+            }
+        },
+        "confirmed_schedule": [
+            {
+                "id": 1962,
+                "job_number": 2961,
+                "sequence_number": 0,
+                "type": "TRANSFER",
+                "state": "COMPLETED",
+                "from_location": "F4",
+                "to_location": "M6",
+                "parameter": 3
+            },
+            {
+                "id": 1963,
+                "job_number": 2962,
+                "sequence_number": 3,
+                "type": "PROCESS",
+                "state": "PENDING_FOR_TRANSIT",
+                "from_location": "F4",
+                "to_location": "F1",
+                "parameter": 2
+            },
+            {
+                "id": 1964,
+                "job_number": 2963,
+                "sequence_number": 1,
+                "type": "TRANSFER",
+                "state": "PENDING_FOR_TRANSIT",
+                "from_location": "M1",
+                "to_location": "M4",
+                "parameter": 4
+            }
+        ],
+        "timestamp": "2024-10-06 06:38:45.248904"
+    },
+    {
+        "platform_data": {
+            "tasks": [
+                {
+                    "id": 1965,
+                    "job_number": 2964,
+                    "sequence_number": 1,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F4",
+                    "to_location": "F3",
+                    "parameter": 6
+                },
+                {
+                    "id": 1966,
+                    "job_number": 2965,
+                    "sequence_number": 4,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "M1",
+                    "to_location": "M1",
+                    "parameter": 7
+                },
+                {
+                    "id": 1967,
+                    "job_number": 2966,
+                    "sequence_number": 4,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F1",
+                    "to_location": "M2",
+                    "parameter": 9
+                }
+            ],
+            "platform_state": "MAINTENANCE",
+            "feeder_machines": [
+                {
+                    "id": "F1",
+                    "current_state": "FEEDING_PART",
+                    "target_state": "RDY"
+                },
+                {
+                    "id": "F2",
+                    "current_state": "FEEDING_PART",
+                    "target_state": "RDY"
+                },
+                {
+                    "id": "F3",
+                    "current_state": "RDY",
+                    "target_state": "RDY"
+                },
+                {
+                    "id": "F4",
+                    "current_state": "RDY",
+                    "target_state": "RDY"
+                }
+            ],
+            "buffer_area": {
+                "buffer_area_id": "B-001",
+                "buffer_area_state": "PROCESSING",
+                "buffer_slots": [
+                    {
+                        "buffer_area_state": "SLOT_1",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_2",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_3",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_4",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_5",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_6",
+                        "buffer_slot_occupied": "FALSE"
+                    }
+                ]
+            },
+            "machines": [
+                {
+                    "id": "M1",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 83
+                },
+                {
+                    "id": "M2",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 43
+                },
+                {
+                    "id": "M3",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 96
+                },
+                {
+                    "id": "M4",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 86
+                },
+                {
+                    "id": "M5",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 18
+                },
+                {
+                    "id": "M6",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 0
+                }
+            ],
+            "logistics": {
+                "current_task": {
+                    "id": 1968,
+                    "job_number": 2967,
+                    "sequence_number": 3,
+                    "type": "PROCESS",
+                    "state": "COMPLETED",
+                    "from_location": "F1",
+                    "to_location": "F4",
+                    "parameter": 8
+                },
+                "previous_task": {
+                    "id": 1969,
+                    "job_number": 2968,
+                    "sequence_number": 3,
+                    "type": "PROCESS",
+                    "state": "IN_PROGRESS",
+                    "from_location": "F4",
+                    "to_location": "M3",
+                    "parameter": 8
+                }
+            }
+        },
+        "confirmed_schedule": null,
+        "timestamp": "2024-10-06 07:11:45.248904"
+    },
+    {
+        "platform_data": {
+            "tasks": [
+                {
+                    "id": 1970,
+                    "job_number": 2969,
+                    "sequence_number": 2,
+                    "type": "PROCESS",
+                    "state": "IN_PROGRESS",
+                    "from_location": "F4",
+                    "to_location": "M2",
+                    "parameter": 10
+                },
+                {
+                    "id": 1971,
+                    "job_number": 2970,
+                    "sequence_number": 5,
+                    "type": "TRANSFER",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "M1",
+                    "to_location": "F3",
+                    "parameter": 8
+                },
+                {
+                    "id": 1972,
+                    "job_number": 2971,
+                    "sequence_number": 5,
+                    "type": "TRANSFER",
+                    "state": "COMPLETED",
+                    "from_location": "F2",
+                    "to_location": "F2",
+                    "parameter": 7
+                },
+                {
+                    "id": 1973,
+                    "job_number": 2972,
+                    "sequence_number": 3,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "F3",
+                    "to_location": "F1",
+                    "parameter": 6
+                }
+            ],
+            "platform_state": "STOPPED",
+            "feeder_machines": [
+                {
+                    "id": "F1",
+                    "current_state": "RDY",
+                    "target_state": "RDY"
+                },
+                {
+                    "id": "F2",
+                    "current_state": "MAINTENANCE",
+                    "target_state": "MAINTENANCE"
+                },
+                {
+                    "id": "F3",
+                    "current_state": "MAINTENANCE",
+                    "target_state": "MAINTENANCE"
+                },
+                {
+                    "id": "F4",
+                    "current_state": "FAILURE",
+                    "target_state": "FAILURE"
+                }
+            ],
+            "buffer_area": {
+                "buffer_area_id": "B-001",
+                "buffer_area_state": "PROCESSING",
+                "buffer_slots": [
+                    {
+                        "buffer_area_state": "SLOT_1",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_2",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_3",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_4",
+                        "buffer_slot_occupied": "FALSE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_5",
+                        "buffer_slot_occupied": "TRUE"
+                    },
+                    {
+                        "buffer_area_state": "SLOT_6",
+                        "buffer_slot_occupied": "FALSE"
+                    }
+                ]
+            },
+            "machines": [
+                {
+                    "id": "M1",
+                    "state": "FAILURE",
+                    "progress_counter": 44
+                },
+                {
+                    "id": "M2",
+                    "state": "IDLE_EMPTY",
+                    "progress_counter": 11
+                },
+                {
+                    "id": "M3",
+                    "state": "IDLE_FULL",
+                    "progress_counter": 66
+                },
+                {
+                    "id": "M4",
+                    "state": "IDLE_EMPTY",
+                    "progress_counter": 97
+                },
+                {
+                    "id": "M5",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 2
+                },
+                {
+                    "id": "M6",
+                    "state": "MAINTENANCE",
+                    "progress_counter": 44
+                }
+            ],
+            "logistics": {
+                "current_task": {
+                    "id": 1974,
+                    "job_number": 2973,
+                    "sequence_number": 4,
+                    "type": "PROCESS",
+                    "state": "IN_PROGRESS",
+                    "from_location": "F3",
+                    "to_location": "F1",
+                    "parameter": 9
+                },
+                "previous_task": {
+                    "id": 1975,
+                    "job_number": 2974,
+                    "sequence_number": 4,
+                    "type": "PROCESS",
+                    "state": "PENDING_FOR_TRANSIT",
+                    "from_location": "M5",
+                    "to_location": "F3",
+                    "parameter": 8
+                }
+            }
+        },
+        "confirmed_schedule": [
+            {
+                "id": 1976,
+                "job_number": 2975,
+                "sequence_number": 4,
+                "type": "TRANSFER",
+                "state": "IN_PROGRESS",
+                "from_location": "M4",
+                "to_location": "M6",
+                "parameter": 1
+            }
+        ],
+        "timestamp": "2024-10-06 07:30:45.248904"
+    }
+]
