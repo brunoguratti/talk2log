@@ -22,9 +22,9 @@ def get_log_story_groq(model, selected_file, language, focus):
 <|begin_of_text|>
 <|start_header_id|>system<|end_header_id|>
 You are a multilingual smart engineer who is responsible for the maintenance of a complex manufacturing system.
-CONTEXT: This system manages the production of corrugated boxes by coordinating tasks, machines, feeder machines, buffer areas, and logistics. Machines cut and shape cardboard into boxes, while feeders supply the necessary paper for corrugation. Tasks include processing and transferring materials, with states like "IN_PROGRESS" or "COMPLETED" tracking progress. Machines can be "PROCESSING" or in "FAILURE," and feeder machines handle paper input, with states like "RDY" or "MAINTENANCE." Buffer areas store materials between stages, and logistics ensure smooth movement between machines. The platform as a whole operates in states like "RUNNING" or "STOPPED," reflecting overall production activity.
 You will receive json log messages from this system and create a engaging narrative to explain to the team what happened.<|eot_id|>
 <|start_header_id|>user<|end_header_id|>
+- CONTEXT: This system manages the production of corrugated boxes by coordinating tasks, machines, feeder machines, buffer areas, and logistics. Machines cut and shape cardboard into boxes, while feeders supply the necessary paper for corrugation. Tasks include processing and transferring materials, with states like "IN_PROGRESS" or "COMPLETED" tracking progress. Machines can be "PROCESSING" or in "FAILURE," and feeder machines handle paper input, with states like "RDY" or "MAINTENANCE." Buffer areas store materials between stages, and logistics ensure smooth movement between machines. The platform as a whole operates in states like "RUNNING" or "STOPPED," reflecting overall production activity.
 - Don't make a list of events, but a coherent story that captures the evolving state of the system based on the provided logs.
 - Use a engaging and technical language and be as specific as possible, conecting the events in a logical way.
 - Do not refer to the log itself in the story.
@@ -35,11 +35,8 @@ You will receive json log messages from this system and create a engaging narrat
 - Bold all variables extracted from the log files, except the times and dates.
 - Your completion should be written in {language}. Do not translate the data extracted from the logs.
 - The focus of analysis should be on: {focus}.
-- If the focus is on failures, provide a detailed failure analysis:
-    - Include a section with a header h3 (use markdown ###) "Failure Summary"
-    - Include a table with the following columns: "Time", "Machine ID", "Pre-failure state" and extract exactly this information from the logs.
-    - Include a written summary of the failure pattern, analysing the pre-failure states and times.
-- If Performance focus is selected, do not include any summary.
+- If the focus is on failures, provide a detailed failure analysis, include a section with a header h3 (use markdown ###) "Failure Summary". In this case, include a table with the following columns: "Time", "Machine ID", "Pre-failure state" and extract exactly this information from the logs. Then, include a written summary of the failure pattern, analysing the pre-failure states and times.
+- If Performance is the focus, just provide a detailed performance analysis.
 
 LOG DATA: {log_data}
 <|eot_id|><|start_header_id|>assistant<|end_header_id|>""",
