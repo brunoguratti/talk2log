@@ -61,7 +61,8 @@ st.write("Welcome! Select a JSON log file and generate a narrative based on its 
 # Sidebar for file and language selection
 st.sidebar.header("Select the log file")
 log_dir = './logs'  # Specify the log directory
-json_files = [f for f in os.listdir(log_dir) if f.endswith('.json')].sort()
+json_files = [f for f in os.listdir(log_dir) if f.endswith('.json')]
+json_files = sorted(json_files)
 
 if json_files:
 
