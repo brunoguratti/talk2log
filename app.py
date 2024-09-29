@@ -61,27 +61,27 @@ st.write("Welcome! Select a JSON log file and generate a narrative based on its 
 # Sidebar for file and language selection
 st.sidebar.header("Select the log file")
 log_dir = './logs'  # Specify the log directory
-json_files = [f for f in os.listdir(log_dir) if f.endswith('.json')]
+json_files = [f for f in os.listdir(log_dir) if f.endswith('.json')].sort()
 
 if json_files:
 
     model_names = [
     "llama-3.1-70b-versatile",
-    # "gemma-7b-it",
-    # "gemma2-9b-it",
-    # "llama-3.1-8b-instant",
-    # "llama-3.2-11b-text-preview",
-    # "llama-3.2-11b-vision-preview",
-    # "llama-3.2-1b-preview",
-    # "llama-3.2-3b-preview",
-    # "llama-3.2-90b-text-preview",
-    # "llama-guard-3-8b",
-    # "llama3-70b-8192",
-    # "llama3-8b-8192",
-    # "llama3-groq-70b-8192-tool-use-preview",
-    # "llama3-groq-8b-8192-tool-use-preview",
-    # "llava-v1.5-7b-4096-preview",
-    # "mixtral-8x7b-32768"
+    "gemma-7b-it",
+    "gemma2-9b-it",
+    "llama-3.1-8b-instant",
+    "llama-3.2-11b-text-preview",
+    "llama-3.2-11b-vision-preview",
+    "llama-3.2-1b-preview",
+    "llama-3.2-3b-preview",
+    "llama-3.2-90b-text-preview",
+    "llama-guard-3-8b",
+    "llama3-70b-8192",
+    "llama3-8b-8192",
+    "llama3-groq-70b-8192-tool-use-preview",
+    "llama3-groq-8b-8192-tool-use-preview",
+    "llava-v1.5-7b-4096-preview",
+    "mixtral-8x7b-32768"
 ]
     
     # Select the model to use (standard is "llama-3.1-70b-versatile)
