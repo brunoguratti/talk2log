@@ -21,26 +21,25 @@ def get_log_story_groq(model, selected_file, language, focus):
                 "content": f"""
 <|begin_of_text|>
 <|start_header_id|>system<|end_header_id|>
-You are a multilingual smart engineer who is responsible for the maintenance of a complex system.
-You will receive json log messages from this system.<|eot_id|>
+You are a multilingual smart engineer who is responsible for the maintenance of a complex manufacturing system.
+CONTEXT: This system manages the production of corrugated boxes by coordinating tasks, machines, feeder machines, buffer areas, and logistics. Machines cut and shape cardboard into boxes, while feeders supply the necessary paper for corrugation. Tasks include processing and transferring materials, with states like "IN_PROGRESS" or "COMPLETED" tracking progress. Machines can be "PROCESSING" or in "FAILURE," and feeder machines handle paper input, with states like "RDY" or "MAINTENANCE." Buffer areas store materials between stages, and logistics ensure smooth movement between machines. The platform as a whole operates in states like "RUNNING" or "STOPPED," reflecting overall production activity.
+You will receive json log messages from this system and create a engaging narrative to explain to the team what happened.<|eot_id|>
 <|start_header_id|>user<|end_header_id|>
-- Create a narrative of system changes using log messages.
 - Don't make a list of events, but a coherent story that captures the evolving state of the system based on the provided logs.
 - Use a engaging and technical language and be as specific as possible, conecting the events in a logical way.
 - Do not refer to the log itself in the story.
 - All times should be in the 24-hour format, using the format HH:MM. If it refers to a failure, include the seconds (e.g., 10:30:15), but NEVER the miliseconds.
-- Do not include any header, title or any other information in the narrative.
-- Start the narrative stating the start day and end day of the log. Put it in the following format: "**Start**: 2024-05-15 10:40 AM | **End**: 2024-05-15 17:40 AM".	
-- When you refer to a specific moment, include the time (e.g., "At 10:30 AM"). If you already mentioned the time, you can refer to it as "At the same time" or "3 hours later".
-- Use Markdown to format the text. Bold all machine names and states, IDs and any information taken from the logs, but dates and times.
-- The answer should be given in: {language}. Any example in this instruction should be in the selected language.
-- The focus of analysis should be on: {focus}. Just perform the analysis based on the selected focus.
+- Start the narrative extracting start and end date from the log files: "**Start**: 2024-05-15 10:40 AM | **End**: 2024-05-15 17:40 AM".	
+- When referencing a specific moment, include the time (e.g., "At 10:30 AM"). If the time was previously mentioned, use "At the same time" or indicate the time difference, such as "3 hours later."
+- Use Markdown to format the text, never HTML.
+- Bold all variables extracted from the log files, except the times and dates.
+- Your completion should be written in {language}. Do not translate the data extracted from the logs.
+- The focus of analysis should be on: {focus}.
 - If the focus is on failures, provide a detailed failure analysis:
-    - Include a section with a header <h3> "Failure Summary"
-    - Include a table with the following columns: "Time", "Machine ID", "Pre-failure state"
+    - Include a section with a header h3 (use markdown ###) "Failure Summary"
+    - Include a table with the following columns: "Time", "Machine ID", "Pre-failure state" and extract exactly this information from the logs.
     - Include a written summary of the failure pattern, analysing the pre-failure states and times.
 - If Performance focus is selected, do not include any summary.
-- Just answer in the specified language, do not provide any translation to other language.
 
 LOG DATA: {log_data}
 <|eot_id|><|start_header_id|>assistant<|end_header_id|>""",
