@@ -110,5 +110,11 @@ if json_files:
 
         # Display the generated narrative
         st.write(narrative)
+
+        # show the json file in a codeblock
+        st.subheader("📄 JSON log file")
+        with open(file_path, "r") as f:
+            log_data = json.load(f)
+            st.json(log_data)
 else:
     st.write("❌ No JSON log files found in the current directory.")
