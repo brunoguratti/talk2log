@@ -159,6 +159,7 @@ def get_sentences_from_results(reranked_results, split_texts):
     sentences = [split_texts[i] for i in sentence_indices if 0 <= i < len(split_texts)]
     return "\n\n".join(sentences)
 
+@st.cache_data
 def get_openai_response(model, selected_file, language):
 
     # Open the file with the log data
@@ -195,7 +196,7 @@ def get_openai_response(model, selected_file, language):
   - Use Markdown formatting, **never HTML**.
 
 - **Failure Summary**:
-  - Only include **real system failures** (ignore alarms, warnings, or other non-failure alerts).
+  - Only include **real system failures** (do not include alarms, warnings, info or other non-failure alerts).
   - Include a table under a header 4 `####` "Failure Summary to summarize the failures in the log data. Here's an example of the table format:
   | Time       | Machine ID | Failure Condition |
   |------------|------------|-------------------|
