@@ -10,7 +10,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 from qdrant_client.models import PointStruct
 
-llm_api = st.secrets["api_key"]
+llm_api = st.secrets["llm_api_key "]
 qdrant_api = st.secrets["qdrant_api_key"]
 
 # Set the page configuration
@@ -415,4 +415,3 @@ if log_files:
             st.write("❌ No machine failures detected in the log data.")
 else:
     st.write("❌ No log files found in the current directory.")
-    
