@@ -137,7 +137,7 @@ if collection_name not in collections:
         vectors_config=VectorParams(size=768, distance=Distance.COSINE),
     )
     # Upsert the vectors to the collection
-    upsert_vectors(client, collection_name, vectorized_sentences)
+    upsert_vectors(qdrant_client, collection_name, vectorized_sentences)
 
 ## -- Function to search for similar sentences (vector embeddings) in the collection
 def retrieve_and_rerank(query, top_k=10):
@@ -408,7 +408,8 @@ if log_files:
 
             st.button("🔍 Find potential causes", on_click=set_stage, args = (2,))
             if ss.stage > 1:
-                reranked_results = retrieve_and_rerank(narrative, top_k=10)
+                reranked_results = retrieve_and_rerank(narrative, top_k=5)
+                st.write(reranked_results)
                 sentences = get_sentences_from_results(reranked_results, flattened_sentences)
                 summary_machine = get_summary_machine(model, file_path, machine_id, time)
                 potential_causes = get_rca_groq(model, summary_machine, sentences, language)
