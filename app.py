@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 from qdrant_client.models import PointStruct
-import openai
+from openai import OpenAI
 
 llm_api = st.secrets["llm_api_key"]
 qdrant_api = st.secrets["qdrant_api_key"]
