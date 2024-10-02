@@ -196,12 +196,12 @@ def get_openai_response(model, selected_file, language):
 
 - **Failure Summary**:
   - Only include **real system failures** (ignore alarms, warnings, or other non-failure alerts).
-  - Include a table under a header 4 `####` "Failure Summary
+  - Include a table under a header 4 `####` "Failure Summary to summarize the failures in the log data. Here's an example of the table format:
   | Time       | Machine ID | Failure Condition |
   |------------|------------|-------------------|
   | 09:31:21 | F4 | F4 exceeded max vibration limit |
   | 09:31:21 | M3 | Pressure sensor reading outside of range |
-  - **Group failure conditions** related to the same failure into a **single failure event**. Each row in the table below should summarize all related events that led to the failure.
+  - **Group failure conditions** related to the same failure into a single row in the table.
   - Accurately describe machine conditions during failures without assuming extra details.
 
 - Write the completion in {language}, but do **not** translate any tags or extracted variables from the log files.
