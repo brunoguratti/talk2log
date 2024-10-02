@@ -9,6 +9,7 @@ from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 from qdrant_client.models import PointStruct
+import openai
 
 llm_api = st.secrets["llm_api_key"]
 qdrant_api = st.secrets["qdrant_api_key"]
@@ -157,6 +158,64 @@ def get_sentences_from_results(reranked_results, split_texts):
     sentence_indices = [result.id - 1 for result in reranked_results]
     sentences = [split_texts[i] for i in sentence_indices if 0 <= i < len(split_texts)]
     return "\n\n".join(sentences)
+
+def get_openai_response(model, selected_file, language):
+
+    # Open the file with the log data
+    with open(selected_file, "r") as f:
+        log_data = f.read()
+
+    # Example API call (chat completion with GPT-4 model)
+    client = OpenAI(
+        # This is the default and can be omitted
+        api_key=st.secrets["openai_api_key"],
+    )
+
+    chat_completion = client.chat.completions.create(
+        messages=[
+{
+    "role": "system",
+    "content": "You are a multilingual smart engineer responsible for maintaining a complex manufacturing system. Your task is to review system log messages and craft an engaging narrative explaining the system's operation to the team."
+},
+{
+    "role": "user",
+    "content": f"""
+- **System Context**: The system coordinates the production of corrugated boxes by managing machines, feeder machines, buffer areas, and logistics. Machines cut and shape cardboard, while feeders supply paper for corrugation. Key states for tasks are **"IN_PROGRESS"** or **"COMPLETED"**, while machine states include **"PROCESSING"** or **"FAILURE"**. Feeder machines handle paper input with states like **"RDY"** or **"MAINTENANCE"**. Buffer areas store materials between stages, and the logistics system ensures smooth transitions between machines. The platform’s overall state can be **"RUNNING"** or **"STOPPED"**.
+  
+- **Narrative Instructions**:
+  - **Title**: "System Operation Summary" (use header 4 format, `####`).
+  - Capture just the important details from the logs, focusing on system failures and maintenance or anything that can affect production's KPIs.
+  - Do **not** refer to the log itself in the narrative.
+  - Use engaging, technical language and provide specific details, logically connecting events.
+  - Do **not** make assumptions or invent details when information is lacking.
+  - Use 24-hour time format (e.g., HH:MM). For failure times, include seconds (e.g., 10:30:15), but omit milliseconds.
+  - Start with extracted start and end times from the log: "**Start**: YYYY-MM-DD HH:MM | **End**: YYYY-MM-DD HH:MM".
+  - Mention specific times when relevant (e.g., "At 10:30"). For previously mentioned times, use "At the same time" or time differences like "3 hours later."
+  - Format all variables from the logs in **bold**, except the hour/time.
+  - Use Markdown formatting, **never HTML**.
+
+- **Failure Summary**:
+  - Only include **real system failures** (ignore alarms, warnings, or other non-failure alerts).
+  - Include a table under a header 4 `####` "Failure Summary
+  | Time       | Machine ID | Failure Condition |
+  |------------|------------|-------------------|
+  | 09:31:21 | F4 | F4 exceeded max vibration limit |
+  | 09:31:21 | M3 | Pressure sensor reading outside of range |
+  - **Group failure conditions** related to the same failure into a **single failure event**. Each row in the table below should summarize all related events that led to the failure.
+  - Accurately describe machine conditions during failures without assuming extra details.
+
+- Write the completion in {language}, but do **not** translate any tags or extracted variables from the log files.
+- **LOG DATA**: {log_data}
+"""
+}
+        ],
+        model=model,
+        temperature=0.2,
+        top_p=0.1
+    )
+
+    # Print the response
+    return chat_completion.choices[0].message.content
 
 
 # Function to get log story from Groq API
@@ -341,6 +400,7 @@ if log_files:
 
     model_names = [
         "llama-3.1-70b-versatile",
+        "gpt-4o-mini"
         # "gemma-7b-it",
         # "gemma2-9b-it",
         # "llama-3.1-8b-instant",
@@ -389,7 +449,10 @@ if log_files:
         
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
-        narrative = get_log_story_groq(model, file_path, language, focus)
+        if "gpt" in model:
+            narrative = get_openai_response(model, file_path, language)
+        else:
+            narrative = get_log_story_groq(model, file_path, language, focus)
         st.write(narrative)
         times, machine_ids = extract_failures(narrative)
         failures = [f"{machine_id} at {time}" for machine_id, time in zip(machine_ids, times)]
