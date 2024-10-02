@@ -1,1 +1,5 @@
 groq
+docx
+sentence_transformers
+nltk
+qdrant_client
