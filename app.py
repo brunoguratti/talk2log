@@ -175,39 +175,46 @@ def get_log_story_groq(model, selected_file, language, focus):
 
     chat_completion = client.chat.completions.create(
         messages=[
-            {
-                "role": "system",
-                "content": """You are a multilingual smart engineer who is responsible for the maintenance of a complex manufacturing system.
-You will receive text log messages from this system and create a engaging narrative to explain to the team what happened.""",
-            },
-            {
-"role": "user",
-"content": f"""
-- CONTEXT: This system manages the production of corrugated boxes by coordinating tasks, machines, feeder machines, buffer areas, and logistics. Machines cut and shape cardboard into boxes, while feeders supply the necessary paper for corrugation. Tasks include processing and transferring materials, with states like "IN_PROGRESS" or "COMPLETED" tracking progress. Machines can be "PROCESSING" or in "FAILURE," and feeder machines handle paper input, with states like "RDY" or "MAINTENANCE." Buffer areas store materials between stages, and logistics ensure smooth movement between machines. The platform as a whole operates in states like "RUNNING" or "STOPPED," reflecting overall production activity.
-- Title: "System Operation Summary" (header 4 ####)
-- Write s coherent story that captures the evolving state of the system based on the provided logs.
-- Do not refer to the log itself in the story.
-- Use a engaging and technical language and be as specific as possible, conecting the events in a logical way.
-- If there is lack of information, do not assume or invent details.
-- All times should be in the 24-hour format, using the format HH:MM. If it refers to a failure, include the seconds (e.g., 10:30:15), but NEVER the miliseconds.
-- Start the narrative extracting start and end date from the log files: "**Start**: 2024-05-15 10:40 | **End**: 2024-05-15 17:40".	
-- When referencing a specific moment, include the time (e.g., "At 10:30 AM"). If the time was previously mentioned, use "At the same time" or indicate the time difference, such as "3 hours later."
-- Use Markdown to format the text, never HTML.
-- Bold all variables extracted from the log files, except the times and dates.
-- Your completion should be written in {language}. Do not translate any tag or variable extracted from the log files.
-- Include a section with a header 4 (use markdown ####) "Failure Summary".
-- This section should contain all equipment failures, including the time, machine ID, and failure condition, here is an example of the table format:
-| **Time** | **Machine ID** | **Failure Condition** |
-| --- | --- | --- | --- |
-| 09:31:21 | F4 | [describe the conditions of the failure in a concise way] |
-| 09:31:21 | M3 | [describe the conditions of the failure in a concise way] |
-- The table content should be with no formatting (bold, italic, etc).
-- Failure condition should be a concise description of the machine state when the failure occurred.
-- In the condition column, describe the machine state when the failure occurred, do not assume any information.
-- Do not perform any further analysis on the log data, just extract the relevant information.
-LOG DATA: {log_data}
-""",
-            }
+{
+    "role": "system",
+    "content": "You are a multilingual smart engineer responsible for maintaining a complex manufacturing system. Your task is to review system log messages and craft an engaging narrative explaining the system's operation to the team."
+},
+{
+    "role": "user",
+    "content": f"""
+- **System Context**: The system coordinates the production of corrugated boxes by managing machines, feeder machines, buffer areas, and logistics. Machines cut and shape cardboard, while feeders supply paper for corrugation. Key states for tasks are **"IN_PROGRESS"** or **"COMPLETED"**, while machine states include **"PROCESSING"** or **"FAILURE"**. Feeder machines handle paper input with states like **"RDY"** or **"MAINTENANCE"**. Buffer areas store materials between stages, and the logistics system ensures smooth transitions between machines. The platform’s overall state can be **"RUNNING"** or **"STOPPED"**.
+  
+- **Narrative Instructions**:
+  - **Title**: "System Operation Summary" (use header 4 format, `####`).
+  - Write a clear and coherent story summarizing the system's status and events based on the provided logs.
+  - Capture just the relevant details from the logs, focusing on system failures and maintenance.
+  - Do **not** refer to the log itself in the narrative.
+  - Use engaging, technical language and provide specific details, logically connecting events.
+  - Do **not** make assumptions or invent details when information is lacking.
+  - Use 24-hour time format (e.g., HH:MM). For failure times, include seconds (e.g., 10:30:15), but omit milliseconds.
+  - Start with extracted start and end times from the log: "**Start**: YYYY-MM-DD HH:MM | **End**: YYYY-MM-DD HH:MM".
+  - Mention specific times when relevant (e.g., "At 10:30"). For previously mentioned times, use "At the same time" or time differences like "3 hours later."
+  - Format all variables from the logs in **bold** (excluding times and dates).
+  - Use Markdown formatting, **never HTML**.
+
+- **Failure Summary**:
+  - Only include **real system failures** (ignore alarms, warnings, or other non-failure alerts).
+  - **Group failure conditions** related to the same failure into a **single failure event**. Each event's failure condition should summarize all related events that led to the failure.
+  - Include a table under a header 4 `####` "Failure Summary
+  | Time       | Machine ID | Failure Condition |
+  |------------|------------|-------------------|
+  | 09:31:21   | F4         | [concise description of failure condition] |
+  | 09:31:21   | M3         | [concise description of failure condition] |
+
+  - Accurately describe machine conditions during failures without assuming extra details.
+
+- If the logs focus on system failures, include a summary of the failure patterns, analyzing pre-failure states and timings. Do not perform extra analysis beyond what is in the logs.
+
+- Write the completion in {language}, but do **not** translate any tags or extracted variables from the log files.
+
+- **LOG DATA**: {log_data}
+"""
+}
         ],
         model=model,
     )
