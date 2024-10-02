@@ -177,41 +177,36 @@ def get_log_story_groq(model, selected_file, language, focus):
         messages=[
 {
     "role": "system",
-    "content": "You are a multilingual smart engineer responsible for maintaining a complex manufacturing system. Your task is to review system log messages and craft an engaging narrative explaining the system's operation to the team."
+    "content": "You are a multilingual smart engineer responsible for maintaining a complex manufacturing system of corrugated box production line. Your task is to review system log messages and craft an engaging narrative explaining the system's operation to the team."
 },
 {
     "role": "user",
     "content": f"""
-- **System Context**: The system coordinates the production of corrugated boxes by managing machines, feeder machines, buffer areas, and logistics. Machines cut and shape cardboard, while feeders supply paper for corrugation. Key states for tasks are **"IN_PROGRESS"** or **"COMPLETED"**, while machine states include **"PROCESSING"** or **"FAILURE"**. Feeder machines handle paper input with states like **"RDY"** or **"MAINTENANCE"**. Buffer areas store materials between stages, and the logistics system ensures smooth transitions between machines. The platform’s overall state can be **"RUNNING"** or **"STOPPED"**.
+- **Task**: Write a clear and coherent story summarizing the system's status and events based on the provided logs.
   
 - **Narrative Instructions**:
   - **Title**: "System Operation Summary" (use header 4 format, `####`).
-  - Write a clear and coherent story summarizing the system's status and events based on the provided logs.
-  - Capture just the relevant details from the logs, focusing on system failures and maintenance.
+  - Capture just the important details from the logs, focusing on system failures and maintenance or anything that can affect production's KPIs.
   - Do **not** refer to the log itself in the narrative.
   - Use engaging, technical language and provide specific details, logically connecting events.
   - Do **not** make assumptions or invent details when information is lacking.
   - Use 24-hour time format (e.g., HH:MM). For failure times, include seconds (e.g., 10:30:15), but omit milliseconds.
   - Start with extracted start and end times from the log: "**Start**: YYYY-MM-DD HH:MM | **End**: YYYY-MM-DD HH:MM".
   - Mention specific times when relevant (e.g., "At 10:30"). For previously mentioned times, use "At the same time" or time differences like "3 hours later."
-  - Format all variables from the logs in **bold** (excluding times and dates).
+  - Format all variables from the logs in **bold**, except the hour/time.
   - Use Markdown formatting, **never HTML**.
 
 - **Failure Summary**:
   - Only include **real system failures** (ignore alarms, warnings, or other non-failure alerts).
-  - **Group failure conditions** related to the same failure into a **single failure event**. Each event's failure condition should summarize all related events that led to the failure.
   - Include a table under a header 4 `####` "Failure Summary
   | Time       | Machine ID | Failure Condition |
   |------------|------------|-------------------|
-  | 09:31:21   | F4         | [concise description of failure condition] |
-  | 09:31:21   | M3         | [concise description of failure condition] |
-
+  | 09:31:21 | F4 | F4 exceeded max vibration limit |
+  | 09:31:21 | M3 | Pressure sensor reading outside of range |
+  - **Group failure conditions** related to the same failure into a **single failure event**. Each row in the table below should summarize all related events that led to the failure.
   - Accurately describe machine conditions during failures without assuming extra details.
 
-- If the logs focus on system failures, include a summary of the failure patterns, analyzing pre-failure states and timings. Do not perform extra analysis beyond what is in the logs.
-
 - Write the completion in {language}, but do **not** translate any tags or extracted variables from the log files.
-
 - **LOG DATA**: {log_data}
 """
 }
