@@ -1,0 +1,448 @@
+[
+  {
+    "timestamp": "2023-01-17 07:00:00.000",
+    "type": "ACTION",
+    "code": "M100.0",
+    "description": "SYSTEMSTARTUP",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 07:00:15.834",
+    "type": "INFO",
+    "message": "ALL MACHINES CONNECTED SUCCESSFULLY"
+  },
+  {
+    "timestamp": "2023-01-17 07:00:32.215",
+    "type": "STATE",
+    "code": "Q0.0",
+    "description": "FEEDERMOTOR FD01-MOTOR",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 07:00:34.507",
+    "type": "STATE",
+    "code": "Q0.1",
+    "description": "CUTTINGMOTOR CT01-MOTOR",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 07:00:36.716",
+    "type": "STATE",
+    "code": "Q0.2",
+    "description": "SHAPINGMOTOR SH01-MOTOR",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 07:00:40.213",
+    "type": "STATE",
+    "code": "Q0.3",
+    "description": "GLUINGMOTOR GL01-MOTOR",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 07:00:43.289",
+    "type": "STATE",
+    "code": "Q0.4",
+    "description": "INSPECTIONSENSOR IN01-SENSOR",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 07:01:05.761",
+    "type": "ACTION",
+    "code": "M100.1",
+    "description": "PRODUCTIONLINESTART",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 07:15:28.532",
+    "type": "INFO",
+    "message": "PRODUCT A BATCH 1 STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 07:30:12.781",
+    "type": "INFO",
+    "message": "LUBRICATION LEVEL CHECK: CT01 OK"
+  },
+  {
+    "timestamp": "2023-01-17 07:35:45.926",
+    "type": "WARNING",
+    "message": "GL01.TEMPERATURE HIGH: 85°C"
+  },
+  {
+    "timestamp": "2023-01-17 07:38:10.295",
+    "type": "INFO",
+    "message": "GL01 COOLING SYSTEM ACTIVE, TEMPERATURE STABILIZED"
+  },
+  {
+    "timestamp": "2023-01-17 07:45:28.106",
+    "type": "INFO",
+    "message": "PRODUCT A QUALITY CHECK PASSED: BATCH #10543"
+  },
+  {
+    "timestamp": "2023-01-17 08:00:12.453",
+    "type": "ACTION",
+    "code": "M101.2",
+    "description": "PRODUCTCHANGEOVER",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 08:05:27.865",
+    "type": "INFO",
+    "message": "PRODUCT B PARAMETERS LOADED SUCCESSFULLY"
+  },
+  {
+    "timestamp": "2023-01-17 08:15:45.314",
+    "type": "WARNING",
+    "message": "AMBIENT TEMPERATURE HIGH: 33°C"
+  },
+  {
+    "timestamp": "2023-01-17 08:20:52.871",
+    "type": "INFO",
+    "message": "PRODUCT B BATCH 1 STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 08:30:15.231",
+    "type": "INFO",
+    "message": "CT01 VIBRATION LEVEL HIGH"
+  },
+  {
+    "timestamp": "2023-01-17 08:32:14.561",
+    "type": "INFO",
+    "message": "CT01 VIBRATION BACK TO NORMAL"
+  },
+  {
+    "timestamp": "2023-01-17 08:45:36.982",
+    "type": "INFO",
+    "message": "INSPECTION SENSOR IN01 CALIBRATED"
+  },
+  {
+    "timestamp": "2023-01-17 09:00:01.145",
+    "type": "INFO",
+    "message": "PRODUCT B QUALITY CHECK PASSED: BATCH #10544"
+  },
+  {
+    "timestamp": "2023-01-17 09:15:28.654",
+    "type": "INFO",
+    "message": "PACKAGING COMPLETE FOR PRODUCT B BATCH #10544"
+  },
+  {
+    "timestamp": "2023-01-17 09:30:12.471",
+    "type": "ACTION",
+    "code": "M102.3",
+    "description": "SHIFT A PRODUCTIONLINESTOP",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 09:30:15.712",
+    "type": "STATE",
+    "message": "PRODUCTION LINE STOPPED FOR SHIFT CHANGE"
+  },
+  {
+    "timestamp": "2023-01-17 09:45:00.000",
+    "type": "INFO",
+    "message": "SHIFT B STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 09:55:20.891",
+    "type": "ACTION",
+    "code": "M103.1",
+    "description": "SYSTEMSTARTUP FOR SHIFT B",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 10:00:35.237",
+    "type": "INFO",
+    "message": "PRODUCT C BATCH 1 STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 10:15:48.765",
+    "type": "INFO",
+    "message": "CUTTING BLADES CHECK: CT01 BLADES WEAR DETECTED"
+  },
+  {
+    "timestamp": "2023-01-17 10:20:56.123",
+    "type": "WARNING",
+    "message": "GLUE TANK LEVEL LOW: GL01"
+  },
+  {
+    "timestamp": "2023-01-17 10:25:35.972",
+    "type": "ACTION",
+    "code": "M104.2",
+    "description": "GLUE REFILL INITIATED",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 10:40:56.213",
+    "type": "INFO",
+    "message": "GLUE REFILL COMPLETE FOR GL01"
+  },
+  {
+    "timestamp": "2023-01-17 11:05:20.364",
+    "type": "ALARM-HI",
+    "message": "SH01.MOTOR VIBRATION EXCEEDS LIMIT"
+  },
+  {
+    "timestamp": "2023-01-17 11:05:23.512",
+    "type": "ALARM-HIHI",
+    "message": "SH01.MOTOR STOPPED"
+  },
+  {
+    "timestamp": "2023-01-17 11:25:36.734",
+    "type": "INFO",
+    "message": "OPERATOR INSPECTING SH01 FOR REPAIRS"
+  },
+  {
+    "timestamp": "2023-01-17 11:40:12.632",
+    "type": "INFO",
+    "message": "SH01 MOTOR RESTARTED AFTER MAINTENANCE"
+  },
+  {
+    "timestamp": "2023-01-17 11:50:48.456",
+    "type": "STATE",
+    "message": "SH01: STATE CHANGED TO READY"
+  },
+  {
+    "timestamp": "2023-01-17 12:10:15.391",
+    "type": "INFO",
+    "message": "PRODUCT C QUALITY CHECK PASSED: BATCH #10545"
+  },
+  {
+    "timestamp": "2023-01-17 12:30:42.981",
+    "type": "ACTION",
+    "code": "M105.4",
+    "description": "MAINTENANCESCHEDULED FOR CT01",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 12:40:22.531",
+    "type": "INFO",
+    "message": "MAINTENANCE COMPLETE: CT01 CUTTING BLADES REPLACED"
+  },
+  {
+    "timestamp": "2023-01-17 13:00:25.561",
+    "type": "INFO",
+    "message": "SYSTEM PERFORMANCE CHECK: ALL PARAMETERS NORMAL"
+  },
+  {
+    "timestamp": "2023-01-17 13:30:12.453",
+    "type": "INFO",
+    "message": "PRODUCT C BATCH 2 STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 14:15:35.451",
+    "type": "INFO",
+    "message": "ENERGY CONSUMPTION FOR SHIFT B: 125 KWH"
+  },
+  {
+    "timestamp": "2023-01-17 14:30:45.789",
+    "type": "INFO",
+    "message": "LUBRICATION LEVEL OK FOR SH01"
+  },
+  {
+    "timestamp": "2023-01-17 15:00:12.321",
+    "type": "INFO",
+    "message": "SYSTEM DIAGNOSTIC: NO ISSUES DETECTED"
+  },
+  {
+    "timestamp": "2023-01-17 15:15:10.712",
+    "type": "INFO",
+    "message": "PACKAGING MATERIAL FULLY RESTOCKED FOR PK01"
+  },
+  {
+    "timestamp": "2023-01-17 15:45:28.612",
+    "type": "INFO",
+    "message": "PRODUCT C BATCH 2 COMPLETED"
+  },
+  {
+    "timestamp": "2023-01-17 16:00:12.789",
+    "type": "INFO",
+    "message": "SHIFT B TARGET MET FOR PRODUCT C: 1,500 UNITS"
+  },
+  {
+    "timestamp": "2023-01-17 16:15:45.632",
+    "type": "ACTION",
+    "code": "M106.3",
+    "description": "SHIFT B PRODUCTIONLINESTOP",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 16:16:50.943",
+    "type": "STATE",
+    "message": "PRODUCTION LINE STOPPED FOR SHIFT CHANGE"
+  },
+  {
+    "timestamp": "2023-01-17 16:30:00.000",
+    "type": "INFO",
+    "message": "SHIFT C STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 16:45:28.471",
+    "type": "ACTION",
+    "code": "M107.1",
+    "description": "SYSTEMSTARTUP FOR SHIFT C",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 16:50:12.987",
+    "type": "INFO",
+    "message": "PRODUCT D BATCH 1 STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 17:20:36.891",
+    "type": "INFO",
+    "message": "SYSTEM PERFORMANCE CHECK: ALL PARAMETERS NORMAL"
+  },
+  {
+    "timestamp": "2023-01-17 17:50:42.354",
+    "type": "INFO",
+    "message": "LUBRICATION LEVEL OK FOR CT01"
+  },
+  {
+    "timestamp": "2023-01-17 18:05:15.143",
+    "type": "INFO",
+    "message": "INSPECTION SENSOR IN01 CALIBRATED FOR PRODUCT D"
+  },
+  {
+    "timestamp": "2023-01-17 18:30:45.412",
+    "type": "INFO",
+    "message": "PRODUCT D BATCH 1 COMPLETED"
+  },
+  {
+    "timestamp": "2023-01-17 19:00:00.000",
+    "type": "INFO",
+    "message": "DAILY ENERGY CONSUMPTION REPORT: 240 KWH"
+  },
+  {
+    "timestamp": "2023-01-17 19:15:00.000",
+    "type": "INFO",
+    "message": "SHIFT C TARGET: 500 UNITS REACHED FOR PRODUCT D"
+  },
+  {
+    "timestamp": "2023-01-17 19:30:45.213",
+    "type": "WARNING",
+    "message": "AMBIENT TEMPERATURE SLIGHTLY ABOVE RECOMMENDED RANGE: 31°C"
+  },
+  {
+    "timestamp": "2023-01-17 19:40:15.712",
+    "type": "INFO",
+    "message": "SYSTEM TEMPERATURE CHECK: WITHIN SAFE LIMITS"
+  },
+  {
+    "timestamp": "2023-01-17 19:55:32.914",
+    "type": "INFO",
+    "message": "LUBRICATION LEVEL CHECK FOR GL01: LEVEL NORMAL"
+  },
+  {
+    "timestamp": "2023-01-17 20:10:45.712",
+    "type": "INFO",
+    "message": "PRODUCT D BATCH 2 STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 20:25:15.413",
+    "type": "WARNING",
+    "message": "PK01.PACKAGING.MATERIAL STOCK BELOW MINIMUM"
+  },
+  {
+    "timestamp": "2023-01-17 20:30:52.987",
+    "type": "ACTION",
+    "code": "M109.2",
+    "description": "MATERIALRESTOCKORDER",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 20:45:35.654",
+    "type": "INFO",
+    "message": "MATERIAL RESTOCKED FOR PK01"
+  },
+  {
+    "timestamp": "2023-01-17 21:00:12.125",
+    "type": "INFO",
+    "message": "VIBRATION LEVEL CHECK FOR CT01: LEVEL WITHIN SAFE LIMITS"
+  },
+  {
+    "timestamp": "2023-01-17 21:15:45.987",
+    "type": "INFO",
+    "message": "PRODUCT D BATCH 2 COMPLETED"
+  },
+  {
+    "timestamp": "2023-01-17 21:30:12.365",
+    "type": "INFO",
+    "message": "QUALITY CHECK PASSED FOR PRODUCT D BATCH #10546"
+  },
+  {
+    "timestamp": "2023-01-17 21:50:25.412",
+    "type": "INFO",
+    "message": "ENERGY CONSUMPTION REPORT: 50 KWH SINCE LAST CHECK"
+  },
+  {
+    "timestamp": "2023-01-17 22:00:32.124",
+    "type": "INFO",
+    "message": "SHIFT C TARGET MET FOR PRODUCT D: 1,000 UNITS"
+  },
+  {
+    "timestamp": "2023-01-17 22:15:00.865",
+    "type": "ACTION",
+    "code": "M110.3",
+    "description": "PRODUCTCHANGEOVER",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 22:20:56.345",
+    "type": "INFO",
+    "message": "PRODUCT E PARAMETERS LOADED SUCCESSFULLY"
+  },
+  {
+    "timestamp": "2023-01-17 22:30:45.972",
+    "type": "INFO",
+    "message": "PRODUCT E BATCH 1 STARTED"
+  },
+  {
+    "timestamp": "2023-01-17 22:50:36.512",
+    "type": "INFO",
+    "message": "OPERATOR CHANGEOVER: JOHN SMITH TO SARAH LEE"
+  },
+  {
+    "timestamp": "2023-01-17 23:00:12.215",
+    "type": "WARNING",
+    "message": "GLUE TANK LEVEL LOW: GL01"
+  },
+  {
+    "timestamp": "2023-01-17 23:05:35.612",
+    "type": "ACTION",
+    "code": "M111.2",
+    "description": "GLUE REFILL ORDERED",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 23:15:45.451",
+    "type": "INFO",
+    "message": "LUBRICATION LEVEL CHECK FOR CT01: LEVEL OK"
+  },
+  {
+    "timestamp": "2023-01-17 23:30:25.987",
+    "type": "INFO",
+    "message": "PRODUCT E BATCH 1 COMPLETED"
+  },
+  {
+    "timestamp": "2023-01-17 23:45:32.214",
+    "type": "INFO",
+    "message": "QUALITY CHECK PASSED FOR PRODUCT E BATCH #10547"
+  },
+  {
+    "timestamp": "2023-01-17 23:55:12.912",
+    "type": "ACTION",
+    "code": "M112.4",
+    "description": "SYSTEM SHUTDOWN FOR DAY END",
+    "value": 1
+  },
+  {
+    "timestamp": "2023-01-17 23:59:59.999",
+    "type": "STATE",
+    "message": "PRODUCTION LINE STOPPED FOR END OF DAY"
+  },
+  {
+    "timestamp": "2023-01-17 23:59:59.999",
+    "type": "INFO",
+    "message": "DAILY ENERGY CONSUMPTION REPORT: TOTAL 300 KWH"
+  }
+]
