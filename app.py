@@ -107,7 +107,7 @@ def upsert_vectors(client, collection_name, vectorized_sentences):
     ]
 
     # Perform the upsert operation
-    operation_info = qdrant_client.upsert(
+    operation_info = client.upsert(
         collection_name=collection_name,
         wait=True,
         points=points,
@@ -409,7 +409,6 @@ if log_files:
             st.button("🔍 Find potential causes", on_click=set_stage, args = (2,))
             if ss.stage > 1:
                 reranked_results = retrieve_and_rerank(narrative, top_k=5)
-                st.write(reranked_results)
                 sentences = get_sentences_from_results(reranked_results, flattened_sentences)
                 summary_machine = get_summary_machine(model, file_path, machine_id, time)
                 potential_causes = get_rca_groq(model, summary_machine, sentences, language)
