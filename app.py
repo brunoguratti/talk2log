@@ -203,6 +203,8 @@ def get_log_story_groq(model, selected_file, language, focus):
   |------------|------------|-------------------|
   | 09:31:21 | F4 | F4 exceeded max vibration limit |
   | 09:31:21 | M3 | Pressure sensor reading outside of range |
+    - Do not include anything in the table that do not accomplish to this format.
+
   - **Group failure conditions** related to the same failure into a **single failure event**. Each row in the table below should summarize all related events that led to the failure.
   - Accurately describe machine conditions during failures without assuming extra details.
 
