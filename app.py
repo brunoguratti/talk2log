@@ -84,7 +84,7 @@ def gen_summary_message(selected_file, support_info):
     - Be mindful of the time range of events and reference time whenever possible.
     - Don't make any assumptions; base your analysis solely on the information provided in the log data. Just describe what you see in the logs.
     - Don't mention the log data directly in your narrative; use it to extract relevant information for your analysis.
-        - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
+    - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
 
     Structure of the Narrative:
     - System Overview: A summary of the overall system's operation during the specified time range.
@@ -127,7 +127,7 @@ def search_log_entry(log_entry, model, client, threshold):
     result = client.search(
         collection_name="tags_description",
         query_vector=log_embedding,
-        limit=10,
+        limit=5,
         score_threshold=threshold,
     )
 
@@ -213,15 +213,15 @@ if log_files:
 
     st.sidebar.button("📝 Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
-        support_info = get_support_info(file_path, emb_model, qdrant_client, 0.6)
+        support_info = get_support_info(file_path, emb_model, qdrant_client, 0.5)
         # Display the selected log file
         with st.expander("Log file content", expanded=False, icon = "📄"):
             with open(file_path, "r") as f:
                 log_data = f.read()  # Read the file content
                 st.text(log_data)
 
-        # with st.expander("Support file content", expanded=False, icon = "📄"):
-        #         st.text(support_info)
+        with st.expander("Support file content", expanded=False, icon = "📄"):
+                st.text(support_info)
         
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
