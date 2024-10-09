@@ -20,7 +20,7 @@ st.set_page_config(page_title="Talk2log", layout="wide")
 
 ##-- Settings for embedding
 emb_model = SentenceTransformer('all-mpnet-base-v2')
-tag_descriptions = pd.read_csv('tag_descriptions.csv')
+tag_descriptions = pd.read_csv('docs/tag_descriptions.csv')
 
 @st.cache_data
 def get_embeddings(text):
