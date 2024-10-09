@@ -82,8 +82,9 @@ def gen_summary_message(selected_file, support_info):
     - Identify any alarms or critical issues that may affect the system, and describe their impact (e.g., production delays, equipment failures).
     - When explaining the events, refer to the descriptions from the tag dictionary rather than using raw tag names. This will provide more context for your narrative.
     - Be mindful of the time range of events and reference time whenever possible.
+    - Don't make any assumptions; base your analysis solely on the information provided in the log data. Just describe what you see in the logs.
     - Don't mention the log data directly in your narrative; use it to extract relevant information for your analysis.
-    - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
+        - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
 
     Structure of the Narrative:
     - System Overview: A summary of the overall system's operation during the specified time range.
