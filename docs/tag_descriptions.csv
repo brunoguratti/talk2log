@@ -1,0 +1,39 @@
+tag,desc
+ANL_T1000,Temperature control in annealing zone 1
+ANL_T2005,Temperature control in annealing zone 2
+ANL_T3009,Temperature control in annealing zone 3
+BTH_T90045,Temperature at the bath exit point
+BTH_T10020,Thermocouple reading at entrance in the bath
+BTH_T20035,Thermocouple reading at bay 1-3 in the bath
+BTH_T30056,Thermocouple reading at bay 4-9 in the bath
+BTH_T40069,Thermocouple reading at bay 10-16 in the bath
+BTH_T500112,Thermocouple reading at bay 17-21 in the bath
+BP_RCP-890,Batch plant recipe setting 1
+UTL_CCCWFLW87,Cold circulating cooling water flow
+UTL_CCCWPR87,Cold circulating cooling water pressure
+CE_PCK_RBT_01VACUUM_ALERT,Vacuum alert for packing robot 1
+CE_PCK_RBT_02VACUUM_ALERT,Vacuum alert for packing robot 2
+CE_PCK_RBT_03VACUUM_ALERT,Vacuum alert for packing robot 3
+FUR_BRNR01FLW12,Gas flow control for burner 1 on furnace
+FUR_BRNR02FLW55,Gas flow control for burner 2 on furnace
+FUR_BRNR03FLW63,Gas flow control for burner 3 on furnace
+FUR_BRNR04FLW75,Gas flow control for burner 4 on furnace
+FUR_BRNR05FLW97,Gas flow control for burner 5 on furnace
+FUR_PRECTRL_MODE,Furnace pressure control mode
+FUR_STRRSP,Stirrer speed in the furnace (RPM)
+BTH_T95500,Temperature in the bath canal
+FUR_T001TEMP_ALERT,Temperature alert at thermocouple T001
+FUR_T001oTEMP_ALERT,Open thermocouple alert at T001
+FUR_T003TEMP_ALERT,Temperature alert at thermocouple T003
+FUR_T003oTEMP_ALERT,Open thermocouple alert at T003
+FUR_T005TEMP_ALERT,Temperature alert at thermocouple T005
+FUR_T005oTEMP_ALERT,Open thermocouple alert at T005
+FUR_T045TEMP_ALERT,Temperature alert at thermocouple T045
+BTH_TR-01SP00,Speed of top roller pair 1
+BTH_TR-02SP00,Speed of top roller pair 2
+BTH_TR-03SP00,Speed of top roller pair 3
+BTH_TR-04SP00,Speed of top roller pair 4
+BTH_TR-05SP00,Speed of top roller pair 5
+BTH_TR-06SP00,Speed of top roller pair 6
+FUR_PCV-079,Valve control for pressure in the furnace
+FUR_WP_COOL,Cooling control in the furnace waistpipe
