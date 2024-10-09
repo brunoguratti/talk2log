@@ -81,7 +81,7 @@ def gen_summary_message(selected_file, support_info):
     - Focus on significant events, operational changes, and actions taken by the operators to ensure the smooth running of the system.
     - Identify any alarms or critical issues that may affect the system, and describe their impact (e.g., production delays, equipment failures).
     - When explaining the events, refer to the descriptions from the tag dictionary rather than using raw tag names. This will provide more context for your narrative.
-    - Be mindful of the time range of events and reference it when necessary.
+    - Be mindful of the time range of events and reference time whenever possible.
     - Don't mention the log data directly in your narrative; use it to extract relevant information for your analysis.
     - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
 
@@ -219,8 +219,8 @@ if log_files:
                 log_data = f.read()  # Read the file content
                 st.text(log_data)
 
-        with st.expander("Support file content", expanded=False, icon = "📄"):
-                st.text(support_info)
+        # with st.expander("Support file content", expanded=False, icon = "📄"):
+        #         st.text(support_info)
         
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
