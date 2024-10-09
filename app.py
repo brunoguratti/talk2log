@@ -126,7 +126,7 @@ def search_log_entry(log_entry, model, client, threshold):
     result = client.search(
         collection_name="tags_description",
         query_vector=log_embedding,
-        limit=5,  # Set a large limit to return more results, or use None for unlimited
+        limit=10,
         score_threshold=threshold,
     )
 
@@ -224,7 +224,7 @@ if log_files:
         
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
-        messages = gen_summary_message(selected_file, support_info)
+        messages = gen_summary_message(file_path, support_info)
         response, num_tokens_response, num_tokens_prompt = get_openai_response(llm_model, messages, temperature, top_p)
 
         st.write(response)
