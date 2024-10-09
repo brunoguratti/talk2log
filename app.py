@@ -87,9 +87,9 @@ def gen_summary_message(selected_file, support_info):
     - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
 
     Structure of the Narrative:
-    - System Overview: A summary of the overall system's operation during the specified time range.
-    - Critical Events: A description of critical issues, why they occurred, and their impact.
-    - Operator Actions: A breakdown of operator interventions and their significance.
+    - A summary of the overall system's operation during the specified time range.
+    - A description of critical issues, why they occurred, and their impact.
+    - A breakdown of operator interventions and their significance.
     - Length: The narrative should contain no more than 500 words.
 
     Dictionary of tags: {support_info}  
