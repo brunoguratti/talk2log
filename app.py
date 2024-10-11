@@ -194,7 +194,7 @@ def set_stage(stage):
     ss.stage = stage
 
 # Header
-st.title("💬 Talk2log")
+st.title("💬 Talk2log") 
 st.write("Welcome! I'm a tool to translate complex industrial log files into engaging narratives.")
 
 # Sidebar for file and language selection
