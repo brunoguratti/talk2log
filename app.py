@@ -48,11 +48,7 @@ distance="Cosine"
 
 ##-- Upsert the vectors to the collection
 collection_name = "tags_description"
-# delete the collection if already exists
-try:
-    qdrant_client.delete_collection(collection_name)
-except:
-    pass
+
 collections = qdrant_client.get_collections()
 collections = [collection.name for collection in collections.collections]
 
@@ -212,17 +208,6 @@ if log_files:
     selected_file = st.sidebar.selectbox("📄 Select a log file:", log_files)
     file_path = os.path.join(log_dir, selected_file)
 
-    # Updated language options in the sidebar
-    languages_in_native = [
-        "English",
-        "Português (Brasil)",
-        "Français",
-        "Deutsch",
-        "Español",
-        "Italiano"
-    ]
-    language = st.sidebar.selectbox("🌐 Select Language:", languages_in_native)
-
     st.sidebar.button("📝 Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
         support_info = get_support_info(file_path, emb_model, qdrant_client, 0.5)
@@ -237,7 +222,7 @@ if log_files:
         
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
-        messages = gen_summary_message(file_path, support_info)
+        messages = gen_summary_messages(file_path, support_info)
         response, num_tokens_response, num_tokens_prompt = get_openai_response(llm_model, messages, temperature, top_p)
 
         st.write(response)
