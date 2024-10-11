@@ -16,7 +16,7 @@ qdrant_api = st.secrets["qdrant_api_key"]
 openai_key=st.secrets["openai_api_key"]
 
 # Set the page configuration
-st.set_page_config(page_title="Talk2log", layout="wide")
+st.set_page_config(page_title="Talk2log", layout="wide", page_icon="💬")
 
 ##-- Settings for embedding
 emb_model = SentenceTransformer('all-mpnet-base-v2')
@@ -195,7 +195,7 @@ def set_stage(stage):
 
 # Header
 st.title("💬 Talk2log")
-st.write("🌟 Welcome! I'm a tool to translate complex industrial log files into engaging narratives.")
+st.write("Welcome! I'm a tool to translate complex industrial log files into engaging narratives.")
 
 # Sidebar for file and language selection
 st.sidebar.header("Select the log file")
