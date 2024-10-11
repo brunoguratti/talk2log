@@ -11,14 +11,14 @@ BTH_T500112,Thermocouple reading at bay 17-21 in the bath
 BP_RCP-890,Batch plant recipe setting 1
 UTL_CCCWFLW87,Cold circulating cooling water flow
 UTL_CCCWPR87,Cold circulating cooling water pressure
-CE_PCK_RBT_01VACUUM_ALERT,Vacuum alert for packing robot 1
-CE_PCK_RBT_02VACUUM_ALERT,Vacuum alert for packing robot 2
-CE_PCK_RBT_03VACUUM_ALERT,Vacuum alert for packing robot 3
-FUR_BRNR01FLW12,Gas flow control for burner 1 on furnace
-FUR_BRNR02FLW55,Gas flow control for burner 2 on furnace
-FUR_BRNR03FLW63,Gas flow control for burner 3 on furnace
-FUR_BRNR04FLW75,Gas flow control for burner 4 on furnace
-FUR_BRNR05FLW97,Gas flow control for burner 5 on furnace
+CE_PCK_RBT_01,Packing robot 1
+CE_PCK_RBT_02,Packing robot 2
+CE_PCK_RBT_03,Packing robot 3
+FUR_BRNR01.FLW12,Gas flow control for burner 1 on furnace
+FUR_BRNR02.FLW55,Gas flow control for burner 2 on furnace
+FUR_BRNR03.FLW63,Gas flow control for burner 3 on furnace
+FUR_BRNR04.FLW75,Gas flow control for burner 4 on furnace
+FUR_BRNR05.FLW97,Gas flow control for burner 5 on furnace
 FUR_PRECTRL_MODE,Furnace pressure control mode
 FUR_STRRSP,Stirrer speed in the furnace (RPM)
 BTH_T95500,Temperature in the bath canal

@@ -32,19 +32,27 @@ def get_embeddings(text):
    
     return doc_embeddings
 
+tag_descriptions['cons_desc'] = tag_descriptions['tag'] + ' ' + tag_descriptions['desc']
+
 # Create embeddings for each description
-tag_descriptions['embedding'] = tag_descriptions['desc'].apply(get_embeddings)
+tag_descriptions['embedding'] = tag_descriptions['cons_desc'].apply(get_embeddings)
 
 ##-- Connect to the vector database
 qdrant_client = QdrantClient(
     url="https://9817dd27-777f-45cb-9bfe-78a2a8e14b88.europe-west3-0.gcp.cloud.qdrant.io:6333", 
     api_key=qdrant_api,
 )
+
 vector_size=tag_descriptions['embedding'].iloc[0].shape[0]
 distance="Cosine"
 
 ##-- Upsert the vectors to the collection
 collection_name = "tags_description"
+# delete the collection if already exists
+try:
+    qdrant_client.delete_collection(collection_name)
+except:
+    pass
 collections = qdrant_client.get_collections()
 collections = [collection.name for collection in collections.collections]
 
@@ -62,7 +70,7 @@ if collection_name not in collections:
     # Insert into Qdrant
     qdrant_client.upsert(collection_name=collection_name, points=points)
 
-def gen_summary_message(selected_file, support_info):
+def gen_summary_messages (selected_file, support_info):
     # Open the file with the log data
     with open(selected_file, "r") as f:
         log_data = f.read()   
@@ -71,27 +79,31 @@ def gen_summary_message(selected_file, support_info):
     {
         "role": "system",
         "content": """
-    You are a multilingual expert engineer managing the operation and maintenance of a highly complex float glass production line. Your primary task is to analyze text log messages from this system and translate them into concise, actionable narratives. Each log message contains vital details, including machine statuses, alarms, operator actions, and adjustments in the system's performance.
-    You are provided with a dictionary of tags and their corresponding descriptions, which you will use to offer insightful interpretations of technical terms. Your job is to interpret these logs and explain what happened and why it happened, making it easy for technical people to understand.""",
+    You are an expert engineer managing the operation and maintenance of a highly complex float glass production line.
+    Your primary task is to analyze text log messages from industrial control system (PLC, SCADA, etc.) and translate them into concise narratives.
+    Each log message contains vital details, including machine statuses, alarms, operator actions, and adjustments in the system's performance.
+    You are provided with a dictionary of machine and device tags and their corresponding descriptions. ALWAYS use the descriptions from the dictionary to provide more context in your narrative rather than the tag names.
+    Your job is to interpret these logs and explain what happened and why it happened, making it easy for technical people to understand.
+    
+    Instructions for Log Analysis:
+    - Don't mention the log data directly in your narrative; use it to extract relevant information for your analysis.
+    - Focus on significant events, operational changes, and actions taken by the operators to ensure the smooth running of the system.
+    - Whenerver you mention an event, include the time when it happened in the following format: "At HH:MM, the operator set the variable PAT15_FECR_L on system SCE01 to 0.".
+    - Do not simply list the events; provide a coherent narrative that captures the evolving state of the system based on the provided logs.
+    - Use bullet points to group similar machines or devices together for better readability.
+    - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
+    - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
+
+    Structure of the Narrative:
+    - System Overview: A summary of the overall system's operation during the specified time range.
+    - Critical Events: A description of critical issues (events related to malfunctions and failures). Do not include operator actions in this section.
+    - Operator Actions: A breakdown of operator interventions and their significance.
+    - Length: The narrative should contain no more than 500 words.
+    """,
     },
     {
     "role": "user",
     "content": f"""
-    Instructions for Log Analysis:
-    - Focus on significant events, operational changes, and actions taken by the operators to ensure the smooth running of the system.
-    - Identify any alarms or critical issues that may affect the system, and describe their impact (e.g., production delays, equipment failures).
-    - When explaining the events, refer to the descriptions from the tag dictionary rather than using raw tag names. This will provide more context for your narrative.
-    - Be mindful of the time range of events and reference time whenever possible.
-    - Don't make any assumptions; base your analysis solely on the information provided in the log data. Just describe what you see in the logs.
-    - Don't mention the log data directly in your narrative; use it to extract relevant information for your analysis.
-    - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
-
-    Structure of the Narrative:
-    - A summary of the overall system's operation during the specified time range.
-    - A description of critical issues, why they occurred, and their impact.
-    - A breakdown of operator interventions and their significance.
-    - Length: The narrative should contain no more than 500 words.
-
     Dictionary of tags: {support_info}  
     Log Data: {log_data}
     """
