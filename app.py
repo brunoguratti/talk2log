@@ -66,6 +66,7 @@ if collection_name not in collections:
     # Insert into Qdrant
     qdrant_client.upsert(collection_name=collection_name, points=points)
 
+@st.cache_data
 def gen_summary_messages (selected_file, support_info):
     # Open the file with the log data
     with open(selected_file, "r") as f:
@@ -180,8 +181,8 @@ def get_support_info(log_file, model, client, threshold):
 
 ##-- Variables
 llm_model = "gpt-4o-mini"
-temperature = 0.2
-top_p = 0.1
+temperature = 0.3
+top_p = 0.3
 
 # Streamlit app
 
