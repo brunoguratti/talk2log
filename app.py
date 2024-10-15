@@ -16,7 +16,7 @@ qdrant_api = st.secrets["qdrant_api_key"]
 openai_key=st.secrets["openai_api_key"]
 
 # Set the page configuration
-st.set_page_config(page_title="talk2log :: turning data into dialogue", page_icon="assets/images/favicon.ico")
+st.set_page_config(page_title="talk2log :: turning data into dialogue", layout="wide", page_icon="assets/images/favicon.ico")
 
 ##-- Settings for embedding
 emb_model = SentenceTransformer('all-mpnet-base-v2')
