@@ -266,22 +266,23 @@ if log_files:
 
     st.sidebar.button("Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
-        support_info = get_support_info(file_path, emb_model, qdrant_client, 0.4)
-        # Display the selected log file
-        with st.expander("Log file content", expanded=False, icon = "📄"):
-            with open(file_path, "r") as f:
-                log_data = f.read()  # Read the file content
-                st.text(log_data)
+        with st.spinner('Analyzing log file...'):
+            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.4)
+            # Display the selected log file
+            with st.expander("Log file content", expanded=False, icon = "📄"):
+                with open(file_path, "r") as f:
+                    log_data = f.read()  # Read the file content
+                    st.text(log_data)
 
-        with st.expander("Support file content", expanded=False, icon = "📄"):
-                st.json(support_info)
-        
+            with st.expander("Support file content", expanded=False, icon = "📄"):
+                    st.json(support_info)
         # Display the log analysis section
-        st.subheader("🧠 Log analysis")
-        messages = gen_summary_messages(file_path, support_info)
-        response = get_cohere_response(messages, llm_model, temperature, top_p)
+        with st.spinner('Generating report...'):
+            st.subheader("🧠 Log analysis")
+            messages = gen_summary_messages(file_path, support_info)
+            response = get_cohere_response(messages, llm_model, temperature, top_p)
 
-        st.write(response)
+            st.write(response)
 else:
     st.write("❌ No log files found in the current directory.")
 
