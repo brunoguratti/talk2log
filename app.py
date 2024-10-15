@@ -205,7 +205,7 @@ def get_support_info(log_file, emb_model, client, threshold):
     # log_entries = log_data.splitlines()
 
     # # Dictionary to store unique tags and their corresponding description
-    # unique_results = {}
+    unique_results = {}
 
     # # Iterate through each line (log entry)
     # for log_entry in log_entries:
