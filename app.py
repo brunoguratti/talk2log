@@ -276,7 +276,6 @@ if log_files:
                     st.json(support_info)
         # Display the log analysis section
         with st.spinner('Generating report...'):
-            st.subheader("🧠 Log analysis")
             messages = gen_summary_messages(file_path, support_info)
             response = get_cohere_response(messages, llm_model, temperature, top_p)
 
