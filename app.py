@@ -10,6 +10,7 @@ from qdrant_client.models import Distance, VectorParams
 from qdrant_client.models import PointStruct
 from openai import OpenAI
 import json
+import cohere
 
 cohere_key=st.secrets["cohere_api_key"]
 qdrant_api = st.secrets["qdrant_api_key"]
@@ -215,7 +216,7 @@ def set_stage(stage):
 # Header
 load_css('css/styles.css')
 st.image("assets/images/talk2log_logo.png", width=200)
-st.markdown("**👋 Hi! I'm a tool that will help you transform complex log files into insightful and easy-to-understand narratives.**")
+st.markdown("**👋 Hi! I'm an AI tool that will help you transform complex log files into insightful and easy-to-understand narratives.**")
 st.write("This is a demo version of the tool, and it is designed to assist you in analyzing log files from industrial control systems.")
 st.write("To get started, select a sample log file from the sidebar and click the 'Analyze the log' button.")
 
