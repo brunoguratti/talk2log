@@ -51,7 +51,7 @@ vector_size=tag_descriptions['embedding'].iloc[0].shape[0]
 distance="Cosine"
 
 ##-- Upsert the vectors to the collection
-collection_name = "tags_vectors"
+collection_name = "tags_description"
 
 collections = qdrant_client.get_collections()
 collections = [collection.name for collection in collections.collections]
