@@ -198,7 +198,7 @@ def load_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 ##-- Variables
-llm_model = "gpt-4o-mini"
+llm_model = "command-r-plus-08-2024"
 temperature = 0.3
 top_p = 0.3
 
@@ -244,7 +244,7 @@ if log_files:
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
         messages = gen_summary_messages(file_path, support_info)
-        response, num_tokens_response, num_tokens_prompt = get_openai_response(llm_model, messages, temperature, top_p)
+        response, num_tokens_response, num_tokens_prompt = get_cohere_response(llm_model, messages, temperature, top_p)
 
         st.write(response)
 else:
