@@ -268,7 +268,7 @@ if log_files:
     st.sidebar.button("Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
         with st.spinner('Analyzing log file...'):
-            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.5)
+            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.3)
             # Display the selected log file
             with st.expander("Log file content", expanded=False, icon = "📄"):
                 with open(file_path, "r") as f:
