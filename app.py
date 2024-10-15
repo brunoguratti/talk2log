@@ -30,8 +30,8 @@ def get_embeddings(text):
     """
     Get embeddings for the provided text using the SentenceTransformer model.
     """
-    model = emb_model
-    doc_embeddings = model.encode(text)
+    emb_model = SentenceTransformer('all-mpnet-base-v2')
+    doc_embeddings = emb_model.encode(text)
    
     return doc_embeddings
 
