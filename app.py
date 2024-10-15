@@ -130,7 +130,7 @@ def get_openai_response(model, messages, temperature=0.2, top_p=0.1):
     return chat_completion.choices[0].message.content, chat_completion.usage.completion_tokens, chat_completion.usage.prompt_tokens
 
 @st.cache_data(show_spinner=False)
-def get_cohere_response(messages, llm_model="command-r-plus-08-2024", temperature=0.3, top_p=0.3):
+def get_cohere_response(messages, llm_model, temperature=0.3, top_p=0.3):
     """ Get a response from the Cohere model."""
 
     co = cohere.ClientV2(cohere_key)
