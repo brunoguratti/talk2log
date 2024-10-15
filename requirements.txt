@@ -1,6 +1,6 @@
-groq
 python-docx
 sentence_transformers
 nltk
 qdrant_client
 openai
+cohere
