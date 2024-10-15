@@ -127,13 +127,13 @@ def get_openai_response(model, messages, temperature=0.2, top_p=0.1):
     )
 
 @st.cache_data(show_spinner=False)
-def get_cohere_response(messages, model="command-r-plus-08-2024", temperature=0.3, top_p=0.3):
+def get_cohere_response(messages, llm_model="command-r-plus-08-2024", temperature=0.3, top_p=0.3):
     """ Get a response from the Cohere model."""
 
     co = cohere.ClientV2(cohere_key)
 
     response = co.chat(
-        model=model,
+        model=llm_model,
         messages=messages,
         temperature=temperature,
         p=top_p,)
@@ -163,7 +163,7 @@ def search_log_entry(log_entry, model, client, threshold):
 
     return matching_results
 
-def get_support_info(log_file, model, client, threshold):
+def get_support_info(log_file, emb_model, client, threshold):
     
     with open(log_file, "r") as f:
         log_data = f.read()
@@ -177,7 +177,7 @@ def get_support_info(log_file, model, client, threshold):
     # Iterate through each line (log entry)
     for log_entry in log_entries:
         # Run search_log_entry for each line of log_data
-        matching_results = search_log_entry(log_entry, model, client, threshold)
+        matching_results = search_log_entry(log_entry, emb_model, client, threshold)
         
         # Loop through the matching results and store them if they have unique tags
         for result in matching_results:

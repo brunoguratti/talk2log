@@ -20,20 +20,20 @@ FUR_BRNR03.FLW63,Gas flow control for burner 3 on furnace
 FUR_BRNR04.FLW75,Gas flow control for burner 4 on furnace
 FUR_BRNR05.FLW97,Gas flow control for burner 5 on furnace
 FUR_PRECTRL_MODE,Furnace pressure control mode
-FUR_STRRSP,Stirrer speed in the furnace (RPM)
-BTH_T95500,Temperature in the bath canal
-FUR_T001TEMP_ALERT,Temperature alert at thermocouple T001
-FUR_T001oTEMP_ALERT,Open thermocouple alert at T001
-FUR_T003TEMP_ALERT,Temperature alert at thermocouple T003
-FUR_T003oTEMP_ALERT,Open thermocouple alert at T003
-FUR_T005TEMP_ALERT,Temperature alert at thermocouple T005
-FUR_T005oTEMP_ALERT,Open thermocouple alert at T005
-FUR_T045TEMP_ALERT,Temperature alert at thermocouple T045
-BTH_TR-01SP00,Speed of top roller pair 1
-BTH_TR-02SP00,Speed of top roller pair 2
-BTH_TR-03SP00,Speed of top roller pair 3
-BTH_TR-04SP00,Speed of top roller pair 4
-BTH_TR-05SP00,Speed of top roller pair 5
-BTH_TR-06SP00,Speed of top roller pair 6
+FUR_STRR.SP00,Stirrer speed in the furnace (RPM)
+BTH_T955.00,Temperature in the bath canal
+FUR_T001.TEMP_ALERT,Temperature alert at thermocouple T001
+FUR_T001o.TEMP_ALERT,Open thermocouple alert at T001
+FUR_T003.TEMP_ALERT,Temperature alert at thermocouple T003
+FUR_T003o.TEMP_ALERT,Open thermocouple alert at T003
+FUR_T005.TEMP_ALERT,Temperature alert at thermocouple T005
+FUR_T005o.TEMP_ALERT,Open thermocouple alert at T005
+FUR_T045.TEMP_ALERT,Temperature alert at thermocouple T045
+BTH_TR-01.SP00,Speed of top roller pair 1
+BTH_TR-02.SP00,Speed of top roller pair 2
+BTH_TR-03.SP00,Speed of top roller pair 3
+BTH_TR-04.SP00,Speed of top roller pair 4
+BTH_TR-05.SP00,Speed of top roller pair 5
+BTH_TR-06.SP00,Speed of top roller pair 6
 FUR_PCV-079,Valve control for pressure in the furnace
 FUR_WP_COOL,Cooling control in the furnace waistpipe
