@@ -126,6 +126,9 @@ def get_openai_response(model, messages, temperature=0.2, top_p=0.1):
         top_p=top_p,
     )
 
+    # Print the response
+    return chat_completion.choices[0].message.content, chat_completion.usage.completion_tokens, chat_completion.usage.prompt_tokens
+
 @st.cache_data(show_spinner=False)
 def get_cohere_response(messages, llm_model="command-r-plus-08-2024", temperature=0.3, top_p=0.3):
     """ Get a response from the Cohere model."""
@@ -140,8 +143,6 @@ def get_cohere_response(messages, llm_model="command-r-plus-08-2024", temperatur
 
     return response.message.content[0].text
 
-    # Print the response
-    return chat_completion.choices[0].message.content, chat_completion.usage.completion_tokens, chat_completion.usage.prompt_tokens
 
 def search_log_entry(log_entry, model, client, threshold):
     # Generate embedding for the log entry
