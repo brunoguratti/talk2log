@@ -7,6 +7,4 @@
     padding-right: 3rem;
 }
 
-[data-testid="stDecoration"] {
-    display: none;
-}
+#root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 0rem;}
