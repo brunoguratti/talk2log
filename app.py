@@ -198,13 +198,17 @@ temperature = 0.3
 top_p = 0.3
 
 # Streamlit app
-
 ## - Create session state manager
 if 'stage' not in ss:
     ss.stage = 0
 
 def set_stage(stage):
     ss.stage = stage
+
+def load_css(file_name):
+    """ Load external CSS file."""
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Header
 st.image("assets/images/talk2log_logo.png", width=150)
