@@ -184,7 +184,7 @@ def search_log_entry(log_entry, model, client, threshold):
     result = client.search(
         collection_name="tags_description",
         query_vector=log_embedding,
-        limit=5,
+        # limit=5,
         score_threshold=threshold,
     )
 
