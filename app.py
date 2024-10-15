@@ -184,7 +184,7 @@ def search_log_entry(log_entry, model, client, threshold):
     result = client.search(
         collection_name="tags_description",
         query_vector=log_embedding,
-        # limit=5,
+        limit=5,
         score_threshold=threshold,
     )
 
@@ -200,26 +200,26 @@ def get_support_info(log_file, emb_model, client, threshold):
     
     with open(log_file, "r") as f:
         log_data = f.read()
-    matching_results = search_log_entry(log_data, emb_model, client, threshold)
-    # Assuming log_data is a multi-line string
-    # log_entries = log_data.splitlines()
 
-    # # Dictionary to store unique tags and their corresponding description
+    # Assuming log_data is a multi-line string
+    log_entries = log_data.splitlines()
+
+    # Dictionary to store unique tags and their corresponding description
     unique_results = {}
 
-    # # Iterate through each line (log entry)
-    # for log_entry in log_entries:
-    #     # Run search_log_entry for each line of log_data
-    #     matching_results = search_log_entry(log_entry, emb_model, client, threshold)
+    # Iterate through each line (log entry)
+    for log_entry in log_entries:
+        # Run search_log_entry for each line of log_data
+        matching_results = search_log_entry(log_entry, emb_model, client, threshold)
         
-    # Loop through the matching results and store them if they have unique tags
-    for result in matching_results:
-        tag = result['tag']
-        description = result['description']
-        
-        # Add to the dictionary only if the tag is not already present
-        if tag not in unique_results:
-            unique_results[tag] = description
+        # Loop through the matching results and store them if they have unique tags
+        for result in matching_results:
+            tag = result['tag']
+            description = result['description']
+            
+            # Add to the dictionary only if the tag is not already present
+            if tag not in unique_results:
+                unique_results[tag] = description
 
     # Now, unique_results contains only unique tags and their descriptions
     # You can convert this to a list or whatever format you need
@@ -268,7 +268,7 @@ if log_files:
     st.sidebar.button("Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
         with st.spinner('Analyzing log file...'):
-            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.3)
+            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.5)
             # Display the selected log file
             with st.expander("Log file content", expanded=False, icon = "📄"):
                 with open(file_path, "r") as f:
