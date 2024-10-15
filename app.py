@@ -223,7 +223,8 @@ def get_support_info(log_file, emb_model, client, threshold):
     # Now, unique_results contains only unique tags and their descriptions
     # You can convert this to a list or whatever format you need
     tag_descriptions = [{"tag": tag, "description": description} for tag, description in unique_results.items()]
-       
+    tag_descriptions = json.dumps(tag_descriptions)
+    
     return tag_descriptions
 
 def load_css(file_name):
