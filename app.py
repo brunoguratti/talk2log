@@ -176,12 +176,12 @@ def get_cohere_response(messages, llm_model, temperature=0.3, top_p=0.3):
     return response.message.content[0].text
 
 @st.cache_data(show_spinner=False)
-def search_log_entry(log_entry, model, client, threshold):
+def search_log_entry(log_entry, _emb_model, _client, threshold):
     # Generate embedding for the log entry
-    log_embedding = model.encode(log_entry)
+    log_embedding = _emb_model.encode(log_entry)
 
     # Search in Qdrant for all vectors that have a score higher than the threshold
-    result = client.search(
+    result = _client.search(
         collection_name="tags_description",
         query_vector=log_embedding,
         limit=5,
