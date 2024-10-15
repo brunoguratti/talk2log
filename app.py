@@ -11,6 +11,9 @@ from qdrant_client.models import PointStruct
 from openai import OpenAI
 import json
 import cohere
+from PIL import Image
+import io
+import base64
 
 cohere_key=st.secrets["cohere_api_key"]
 qdrant_api = st.secrets["qdrant_api_key"]
@@ -78,32 +81,28 @@ def gen_summary_messages (selected_file, support_info):
         "role": "system",
         "content": """
     You are an expert engineer managing the operation and maintenance of a highly complex float glass production line.
-    Your primary task is to analyze text log messages from industrial control system (PLC, SCADA, etc.) and translate them into concise narratives.
-    Each log message contains vital details, including machine statuses, alarms, operator actions, and adjustments in the system's performance.
-    You are provided with a dictionary of machine and device tags and their corresponding descriptions. ALWAYS use the descriptions from the dictionary to provide more context in your narrative rather than the tag names.
-    Your job is to interpret these logs and explain what happened and why it happened, making it easy for technical people to understand.
+    Your primary task is to analyze text log messages from industrial control system (PLC, SCADA, etc.) and translate them into concise narratives using story-telling techniques.
+    You are provided with a dictionary of machine and device tags and their corresponding descriptions. ALWAYS use the descriptions from the dictionary when referring to the tags in the log messages.
     
     Instructions for Log Analysis:
-    - Don't mention the log data directly in your narrative; use it to extract relevant information for your analysis.
-    - Focus on significant events, operational changes, and actions taken by the operators to ensure the smooth running of the system.
-    - Whenerver you mention an event, include the time when it happened in the following format: "At HH:MM, the operator set the variable PAT15_FECR_L on system SCE01 to 0.".
-    - Do not simply list the events; provide a coherent narrative that captures the evolving state of the system based on the provided logs.
+    - Don't mention the log data directly in your narrative
     - Use bullet points to group similar machines or devices together for better readability.
-    - Use Markdown for clear structuring of the response, with sections for the analysis. Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
+    - Use Markdown for clear structuring of the response, with sections for the analysis.
+    - Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
     - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
 
     Structure of the Narrative:
-    - System Overview: A summary of the overall system's operation during the specified time range.
-    - Critical Events: A description of critical issues (events related to malfunctions and failures). Do not include operator actions in this section.
-    - Operator Actions: A breakdown of operator interventions and their significance.
+    - Start with a summary of the overall system's operation during the specified time range. Think of this as the introduction to the story. This should be addressed to the management team.
+    - Then, describe the critical events (related to malfunctions and machine failures). This should be addressed to the maintenance team.
+    - Finally, describe the operator's interventions and their significance.
     - Length: The narrative should contain no more than 500 words.
     """,
     },
     {
     "role": "user",
     "content": f"""
-    Dictionary of tags: {support_info}  
     Log Data: {log_data}
+    Dictionary of tags: {support_info}  
     """
     }
             ]
@@ -253,3 +252,15 @@ if log_files:
         st.write(response)
 else:
     st.write("❌ No log files found in the current directory.")
+
+bg_logo = Image.open("assets/images/bganal_bw.png")
+
+def image_to_base64(image):
+    buffered = io.BytesIO()
+    image.save(buffered, format="PNG")
+    return base64.b64encode(buffered.getvalue()).decode()
+
+st.markdown(
+    f'<br><div style="text-align: center;"><img src="data:image/png;base64,{image_to_base64(bg_logo)}" width="130"></div>',
+    unsafe_allow_html=True,
+)

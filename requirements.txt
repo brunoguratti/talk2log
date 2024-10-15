@@ -4,3 +4,4 @@ nltk
 qdrant_client
 openai
 cohere
+pillow
