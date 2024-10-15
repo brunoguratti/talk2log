@@ -248,7 +248,7 @@ if log_files:
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
         messages = gen_summary_messages(file_path, support_info)
-        response, num_tokens_response, num_tokens_prompt = get_cohere_response(messages, llm_model, temperature, top_p)
+        response = get_cohere_response(messages, llm_model, temperature, top_p)
 
         st.write(response)
 else:
