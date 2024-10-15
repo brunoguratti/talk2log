@@ -53,6 +53,8 @@ distance="Cosine"
 ##-- Upsert the vectors to the collection
 collection_name = "tags_description"
 
+qdrant_client.delete_collection(collection_name=collection_name)
+
 collections = qdrant_client.get_collections()
 collections = [collection.name for collection in collections.collections]
 
