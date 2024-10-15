@@ -207,7 +207,7 @@ def set_stage(stage):
     ss.stage = stage
 
 # Header
-st.image("assets/images/talk2log_logo.png", width=300)
+st.image("assets/images/talk2log_logo.png", width=150)
 st.write("👋 Hi! I'm a tool that will help you transform complex log files into insightful and easy-to-understand narratives.")
 st.write("This is a demo version of the tool, and it is designed to assist you in analyzing log files from industrial control systems.")
 st.write("To get started, select a log file from the sidebar and click the 'Analyze the log' button.")
