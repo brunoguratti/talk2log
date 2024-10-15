@@ -95,7 +95,7 @@ def gen_summary_messages (selected_file, support_info):
     Structure of the Narrative:
     - Title: "# Line Operations: [date in format MMMM DD, YYYY]"
     - Start with a summary of the overall system's operation during the specified time range. Think of this as the introduction to the story.
-    - Then, describe critical events, machine failures, malfunctions, stoppages (do not include operation interventions or alerts in this section). This should be addressed to the maintenance team. Group by machine or device for better clarity.
+    - Then, describe critical events, machine failures, malfunctions, stoppages (DO NOT include operators interventions or alarm events in this section). This should be addressed to the maintenance team. Group by machine or device for better clarity.
     - The same way, describe the operator's interventions. This should be addressed the operations team. Group by operator for better clarity.
     - Length: The narrative should contain no more than 500 words.
     """,
