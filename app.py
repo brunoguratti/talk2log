@@ -85,7 +85,8 @@ def gen_summary_messages (selected_file, support_info):
     You are provided with a dictionary of machine and device tags and their corresponding descriptions. ALWAYS use the descriptions from the dictionary when referring to the tags in the log messages.
     
     Instructions for Log Analysis:
-    - Don't mention the log data directly in your narrative
+    - Don't mention the log data directly in your narrative.
+    - Use the dictionary of tags to identify the machine names, operator names, actions, etc., in the log messages.
     - Use Markdown for clear structuring of the response, with sections for the analysis.
     - Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
     - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
@@ -93,8 +94,8 @@ def gen_summary_messages (selected_file, support_info):
     Structure of the Narrative:
     - Title: "# Line Operations: [date in format MMMM DD, YYYY]"
     - Start with a summary of the overall system's operation during the specified time range. Think of this as the introduction to the story.
-    - Then, describe the events related to machine failures, malfunctions, stoppages (do not include operation interventions). This should be addressed to the maintenance team. Group the events by machine or device.
-    - Finally, describe the operator's interventions and their significance.
+    - Then, describe the events related to machine failures, malfunctions, stoppages (do not include operation interventions). This should be addressed to the maintenance team. Group by machine or device for better clarity.
+    - The same way, describe the operator's interventions. This should be addressed the operations team. Group by operator for better clarity.
     - Length: The narrative should contain no more than 500 words.
     """,
     },
