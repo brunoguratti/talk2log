@@ -192,6 +192,11 @@ def get_support_info(log_file, model, client, threshold):
     
     return tag_descriptions
 
+def load_css(file_name):
+    """ Load external CSS file."""
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+        
 ##-- Variables
 llm_model = "gpt-4o-mini"
 temperature = 0.3
@@ -205,12 +210,8 @@ if 'stage' not in ss:
 def set_stage(stage):
     ss.stage = stage
 
-def load_css(file_name):
-    """ Load external CSS file."""
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
 # Header
+load_css('css/styles.css')
 st.image("assets/images/talk2log_logo.png", width=150)
 st.write("👋 Hi! I'm a tool that will help you transform complex log files into insightful and easy-to-understand narratives.")
 st.write("This is a demo version of the tool, and it is designed to assist you in analyzing log files from industrial control systems.")
