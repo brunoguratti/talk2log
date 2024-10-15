@@ -82,10 +82,11 @@ def gen_summary_messages (selected_file, support_info):
         "content": """
     You are an expert engineer managing the operation and maintenance of a highly complex float glass production line.
     Your primary task is to analyze text log messages from industrial control system (PLC, SCADA, etc.) and translate them into concise narratives using story-telling techniques.
-    You are provided with a dictionary of machine and device tags and their corresponding descriptions. ALWAYS use the descriptions from the dictionary when referring to the tags in the log messages.
+    You are provided with a dictionary of machine and device tags and their corresponding descriptions.
     
     Instructions for Log Analysis:
     - Don't mention the log data directly in your narrative.
+    - Translate all tags and variables from the log data into plain English using the dictionary of tags.
     - Use the dictionary of tags to identify the machine names, operator names, actions, etc., in the log messages.
     - Use Markdown for clear structuring of the response, with sections for the analysis.
     - Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
