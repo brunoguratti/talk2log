@@ -7,3 +7,6 @@
     padding-right: 3rem;
 }
 
+[data-testid="stDecoration"] {
+    display: none;
+}
