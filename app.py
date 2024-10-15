@@ -197,7 +197,7 @@ def search_log_entry(log_entry, model, client, threshold):
     return matching_results
 
 @st.cache_data(show_spinner=False)
-def get_support_info(log_file, client, threshold):
+def get_support_info(log_file, _client, threshold):
     
     with open(log_file, "r") as f:
         log_data = f.read()
@@ -213,7 +213,7 @@ def get_support_info(log_file, client, threshold):
     # Iterate through each line (log entry)
     for log_entry in log_entries:
         # Run search_log_entry for each line of log_data
-        matching_results = search_log_entry(log_entry, emb_model, client, threshold)
+        matching_results = search_log_entry(log_entry, emb_model, _client, threshold)
         
         # Loop through the matching results and store them if they have unique tags
         for result in matching_results:
