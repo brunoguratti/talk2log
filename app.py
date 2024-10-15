@@ -176,6 +176,7 @@ def get_cohere_response(messages, llm_model, temperature=0.3, top_p=0.3):
 
     return response.message.content[0].text
 
+@st.cache_data(show_spinner=False)
 def search_log_entry(log_entry, model, client, threshold):
     # Generate embedding for the log entry
     log_embedding = model.encode(log_entry)
@@ -195,7 +196,8 @@ def search_log_entry(log_entry, model, client, threshold):
     ]
 
     return matching_results
-
+    
+@st.cache_data(show_spinner=False)
 def get_support_info(log_file, emb_model, client, threshold):
     
     with open(log_file, "r") as f:
