@@ -47,16 +47,16 @@ qdrant_client = QdrantClient(
     api_key=qdrant_api,
 )
 
-@st.cache_data(show_spinner=False)
-def vectorize_info():
-    vector_size=tag_descriptions['embedding'].iloc[0].shape[0]
-    distance="Cosine"
+vector_size=tag_descriptions['embedding'].iloc[0].shape[0]
+distance="Cosine"
 
-    ##-- Upsert the vectors to the collection
-    collection_name = "tags_description"
+##-- Upsert the vectors to the collection
+collection_name = "tags_description"
 
-    qdrant_client.delete_collection(collection_name)
+collections = qdrant_client.get_collections()
+collections = [collection.name for collection in collections.collections]
 
+if collection_name not in collections:
     qdrant_client.create_collection(
         collection_name=collection_name,
         vectors_config=VectorParams(size=vector_size, distance=distance)
@@ -67,7 +67,7 @@ def vectorize_info():
         for i, (tag, desc, embedding) in enumerate(zip(tag_descriptions['tag'], tag_descriptions['desc'], tag_descriptions['embedding']))
     ]
 
-        # Insert into Qdrant
+    # Insert into Qdrant
     qdrant_client.upsert(collection_name=collection_name, points=points)
 
 @st.cache_data(show_spinner=False)
@@ -244,8 +244,6 @@ if 'stage' not in ss:
 
 def set_stage(stage):
     ss.stage = stage
-
-vectorize_info()
 
 # Header
 load_css('css/styles.css')
