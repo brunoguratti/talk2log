@@ -88,7 +88,10 @@ def gen_summary_messages (selected_file, support_info):
     - Don't mention the log data directly in your narrative.
     - Translate all tags and variables from the log data into plain English using the dictionary of tags and use them in the narrative.
     - Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
-    - Generate a narrative explaining the sequence of events described in the log data. Mention the time or period of significant events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc., without producing an overwhelming list of times. Focus on maintaining a fluid narrative that highlights the key actions, causes, and consequences while ensuring readability and understanding. Combine related events where possible, and balance the frequency of time mentions to avoid disrupting the flow.    - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
+    - Generate a narrative explaining the sequence of events described in the log data. Mention the time or period of significant events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc., without producing an overwhelming list of times.
+    - Focus on maintaining a fluid narrative that highlights the key actions, causes, and consequences while ensuring readability and understanding.
+    - Combine related events where possible, and balance the frequency of time mentions to avoid disrupting the flow.
+    - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
 
     Structure of the Narrative:
     - Title: "# Line Operations: [date in format MMMM DD, YYYY]"
@@ -197,26 +200,26 @@ def get_support_info(log_file, emb_model, client, threshold):
     
     with open(log_file, "r") as f:
         log_data = f.read()
-
+    matching_results = search_log_entry(log_data, emb_model, client, threshold)
     # Assuming log_data is a multi-line string
-    log_entries = log_data.splitlines()
+    # log_entries = log_data.splitlines()
 
-    # Dictionary to store unique tags and their corresponding description
-    unique_results = {}
+    # # Dictionary to store unique tags and their corresponding description
+    # unique_results = {}
 
-    # Iterate through each line (log entry)
-    for log_entry in log_entries:
-        # Run search_log_entry for each line of log_data
-        matching_results = search_log_entry(log_entry, emb_model, client, threshold)
+    # # Iterate through each line (log entry)
+    # for log_entry in log_entries:
+    #     # Run search_log_entry for each line of log_data
+    #     matching_results = search_log_entry(log_entry, emb_model, client, threshold)
         
-        # Loop through the matching results and store them if they have unique tags
-        for result in matching_results:
-            tag = result['tag']
-            description = result['description']
-            
-            # Add to the dictionary only if the tag is not already present
-            if tag not in unique_results:
-                unique_results[tag] = description
+    # Loop through the matching results and store them if they have unique tags
+    for result in matching_results:
+        tag = result['tag']
+        description = result['description']
+        
+        # Add to the dictionary only if the tag is not already present
+        if tag not in unique_results:
+            unique_results[tag] = description
 
     # Now, unique_results contains only unique tags and their descriptions
     # You can convert this to a list or whatever format you need
