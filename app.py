@@ -88,8 +88,7 @@ def gen_summary_messages (selected_file, support_info):
     - Don't mention the log data directly in your narrative.
     - Translate all tags and variables from the log data into plain English using the dictionary of tags and use them in the narrative.
     - Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
-    - Mention the time or period of the event in the narrative, such as "During the night shift on [date]", "At 10:30 AM", "45 minutes later", etc.
-    - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
+    - Generate a narrative explaining the sequence of events described in the log data. Mention the time or period of significant events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc., without producing an overwhelming list of times. Focus on maintaining a fluid narrative that highlights the key actions, causes, and consequences while ensuring readability and understanding. Combine related events where possible, and balance the frequency of time mentions to avoid disrupting the flow.    - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
 
     Structure of the Narrative:
     - Title: "# Line Operations: [date in format MMMM DD, YYYY]"
@@ -173,7 +172,6 @@ def get_cohere_response(messages, llm_model, temperature=0.3, top_p=0.3):
         p=top_p,)
 
     return response.message.content[0].text
-
 
 def search_log_entry(log_entry, model, client, threshold):
     # Generate embedding for the log entry
@@ -267,7 +265,7 @@ if log_files:
     st.sidebar.button("Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
         with st.spinner('Analyzing log file...'):
-            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.4)
+            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.5)
             # Display the selected log file
             with st.expander("Log file content", expanded=False, icon = "📄"):
                 with open(file_path, "r") as f:
