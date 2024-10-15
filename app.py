@@ -9,6 +9,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 from qdrant_client.models import PointStruct
 from openai import OpenAI
+import json
 
 cohere_key=st.secrets["cohere_api_key"]
 qdrant_api = st.secrets["qdrant_api_key"]
@@ -189,6 +190,7 @@ def get_support_info(log_file, model, client, threshold):
     # Now, unique_results contains only unique tags and their descriptions
     # You can convert this to a list or whatever format you need
     tag_descriptions = [{"tag": tag, "description": description} for tag, description in unique_results.items()]
+    tag_descriptions = json.dumps(tag_descriptions)
     
     return tag_descriptions
 
@@ -239,7 +241,7 @@ if log_files:
                 st.text(log_data)
 
         with st.expander("Support file content", expanded=False, icon = "📄"):
-                st.text(support_info)
+                st.json(support_info)
         
         # Display the log analysis section
         st.subheader("🧠 Log analysis")
