@@ -23,7 +23,6 @@ openai_key=st.secrets["openai_api_key"]
 st.set_page_config(page_title="talk2log :: turning data into dialogue", page_icon="assets/images/favicon.ico")
 
 ##-- Settings for embedding
-emb_model = SentenceTransformer('all-mpnet-base-v2')
 tag_descriptions = pd.read_csv('docs/tag_descriptions.csv')
 
 @st.cache_data(show_spinner=False)
@@ -196,15 +195,17 @@ def search_log_entry(log_entry, model, client, threshold):
     ]
 
     return matching_results
-    
+
 @st.cache_data(show_spinner=False)
-def get_support_info(log_file, emb_model, client, threshold):
+def get_support_info(log_file, client, threshold):
     
     with open(log_file, "r") as f:
         log_data = f.read()
 
     # Assuming log_data is a multi-line string
     log_entries = log_data.splitlines()
+
+    emb_model = SentenceTransformer('all-mpnet-base-v2')
 
     # Dictionary to store unique tags and their corresponding description
     unique_results = {}
@@ -270,7 +271,7 @@ if log_files:
     st.sidebar.button("Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
         with st.spinner('Analyzing log file...'):
-            support_info = get_support_info(file_path, emb_model, qdrant_client, 0.5)
+            support_info = get_support_info(file_path, qdrant_client, 0.5)
             # Display the selected log file
             with st.expander("Log file content", expanded=False, icon = "📄"):
                 with open(file_path, "r") as f:
