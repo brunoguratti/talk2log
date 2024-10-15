@@ -196,7 +196,7 @@ def load_css(file_name):
     """ Load external CSS file."""
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-        
+
 ##-- Variables
 llm_model = "gpt-4o-mini"
 temperature = 0.3
@@ -212,13 +212,13 @@ def set_stage(stage):
 
 # Header
 load_css('css/styles.css')
-st.image("assets/images/talk2log_logo.png", width=150)
-st.write("👋 Hi! I'm a tool that will help you transform complex log files into insightful and easy-to-understand narratives.")
+st.image("assets/images/talk2log_logo.png", width=200)
+st.markdown("**👋 Hi! I'm a tool that will help you transform complex log files into insightful and easy-to-understand narratives.**")
 st.write("This is a demo version of the tool, and it is designed to assist you in analyzing log files from industrial control systems.")
-st.write("To get started, select a log file from the sidebar and click the 'Analyze the log' button.")
+st.write("To get started, select a sample log file from the sidebar and click the 'Analyze the log' button.")
 
 # Sidebar for file and language selection
-st.sidebar.header("Select the log file")
+st.sidebar.header("Get started")
 log_dir = './logs'  # Specify the log directory
 log_files = [f for f in os.listdir(log_dir) if f.endswith('.txt')]
 log_files = sorted(log_files)
@@ -229,7 +229,7 @@ if log_files:
     selected_file = st.sidebar.selectbox("📄 Select a log file:", log_files)
     file_path = os.path.join(log_dir, selected_file)
 
-    st.sidebar.button("📝 Analyze the log", on_click=set_stage, args = (1,))
+    st.sidebar.button("Analyze the log", on_click=set_stage, args = (1,))
     if ss.stage > 0:
         support_info = get_support_info(file_path, emb_model, qdrant_client, 0.4)
         # Display the selected log file
