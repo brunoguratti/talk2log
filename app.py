@@ -2,7 +2,6 @@ import os
 import re
 import streamlit as st
 from streamlit import session_state as ss
-from groq import Groq
 import pandas as pd
 from docx import Document
 from sentence_transformers import SentenceTransformer
@@ -11,18 +10,18 @@ from qdrant_client.models import Distance, VectorParams
 from qdrant_client.models import PointStruct
 from openai import OpenAI
 
-llm_api = st.secrets["llm_api_key"]
+cohere_key=st.secrets["cohere_api_key"]
 qdrant_api = st.secrets["qdrant_api_key"]
 openai_key=st.secrets["openai_api_key"]
 
 # Set the page configuration
-st.set_page_config(page_title="Talk2log", layout="wide", page_icon="💬")
+st.set_page_config(page_title="talk2log :: turning data into dialogue", layout="wide", page_icon="assets/images/favicon.ico")
 
 ##-- Settings for embedding
 emb_model = SentenceTransformer('all-mpnet-base-v2')
 tag_descriptions = pd.read_csv('docs/tag_descriptions.csv')
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def get_embeddings(text):
     """
     Get embeddings for the provided text using the SentenceTransformer model.
@@ -66,7 +65,7 @@ if collection_name not in collections:
     # Insert into Qdrant
     qdrant_client.upsert(collection_name=collection_name, points=points)
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def gen_summary_messages (selected_file, support_info):
     # Open the file with the log data
     with open(selected_file, "r") as f:
@@ -109,7 +108,7 @@ def gen_summary_messages (selected_file, support_info):
     
     return messages
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def get_openai_response(model, messages, temperature=0.2, top_p=0.1):
 
     # Example API call (chat completion with GPT-4 model)
@@ -124,6 +123,20 @@ def get_openai_response(model, messages, temperature=0.2, top_p=0.1):
         temperature=temperature,
         top_p=top_p,
     )
+
+@st.cache_data(show_spinner=False)
+def get_cohere_response(messages, model="command-r-plus-08-2024", temperature=0.3, top_p=0.3):
+    """ Get a response from the Cohere model."""
+
+    co = cohere.ClientV2(cohere_key)
+
+    response = co.chat(
+        model=model,
+        messages=messages,
+        temperature=temperature,
+        p=top_p,)
+
+    return response.message.content[0].text
 
     # Print the response
     return chat_completion.choices[0].message.content, chat_completion.usage.completion_tokens, chat_completion.usage.prompt_tokens
@@ -194,8 +207,10 @@ def set_stage(stage):
     ss.stage = stage
 
 # Header
-st.title("💬 Talk2log") 
-st.write("Welcome! I'm a tool to translate complex industrial log files into engaging narratives.")
+st.image("assets/images/talk2log_logo.png", width=300)
+st.write("👋 Hi! I'm a tool that will help you transform complex log files into insightful and easy-to-understand narratives.")
+st.write("This is a demo version of the tool, and it is designed to assist you in analyzing log files from industrial control systems.")
+st.write("To get started, select a log file from the sidebar and click the 'Analyze the log' button.")
 
 # Sidebar for file and language selection
 st.sidebar.header("Select the log file")
