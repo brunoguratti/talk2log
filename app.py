@@ -85,19 +85,50 @@ def gen_summary_messages (selected_file, support_info):
     
     Instructions for Log Analysis:
     - Don't mention the log data directly in your narrative.
-    - Translate all tags and variables from the log data into plain English using the dictionary of tags and use them in the narrative.
-    - Bold all variables extracted from the log, such as machine names, operator names, actions, etc.
-    - Always mention the time or period of the events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc.
+    - Translate all tags and variables from the log data into plain English using the dictionary of tags and use them in the narrative. Bold all variables extracted from the log.
+    - ALWAYS mention the time or period of the events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc.
     - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
 
     Structure of the Narrative:
     - Title: "# Line Operations: [date in format MMMM DD, YYYY]"
     - Overall summary - Start with a summary of the overall system's operation during the specified time range. Think of this as the introduction to the story.
-    - Critical events - Keep telling the story by describing the critical events (machine failures, malfunctions and stoppages) that occurred during the shift. This should be addressed to the maintenance team. Group relates machines together.
+    - Critical events - Keep telling the story by describing the machine failures, malfunctions and stoppages. This should be addressed to the maintenance team. Group relates machines together.
     - Operational intervention - The same way, describe the operator interventions. This should be addressed the operations team. Group the intervention by operator.
     - Length: The narrative should contain no more than 500 words.
     - Use Markdown for clear structuring of the response, with sections for the analysis.
 
+Here's an example of how you can structure your narrative:
+
+# Line Operations: October 15, 2024
+
+## Overall Summary
+During the early morning shift on October 15, 2024, the float glass production line performed efficiently, with the majority of machines operating within standard parameters. However, a few critical events occurred that impacted production. These issues required maintenance attention and operational intervention to ensure smooth continuation of the process.
+
+## Critical Events
+### Transportation modules
+- At 09:00, the transportation module M370 unexpectedly stopped, causing a potential disruption in the material flow. Two other transportation modules, M244 and M322, also experienced issues. M244 stopped unexpectedly at 12:47, and M322 had its status updated at 16:33.
+- The transportation module M370 was restarted at 09:30, and M244 was manually restarted at 13:00. M322 was automatically restarted at 16:40, which resolved the issues.
+
+### Packing robots
+- Vacuum alerts were triggered at 10:54 and 14:40 for packing robots 01 and 02, respectively. Another alert was triggered at 15:30 for robot 03, indicating a potential issue with the vacuum system.
+
+### Stirrer
+- At 4:00 AM, the furnace stirrer stopped unexpectedly. The system automatically restarted five minutes later, which resumed stirrer's rotation at 5 RPM.
+
+### Ribbon Break
+- A ribbon break occurred at the bath exit at 4:45 AM, leading to a rapid decrease in the bath exit temperature. The temperature dropped below the acceptable range, which would need adjustment to restore ideal conditions for ribbon formation.
+- Another ribbon break occurred at 5:00 AM, causing a similar temperature drop, which required manual intervention to stabilize the process.
+
+## Operational Intervention
+### Glass Level Adjustment by Operator: STUSBP01
+- At 3:30 AM, the operator at STUSBP01 acknowledged the low glass level alarm triggered by the BC4 stoppage.
+- The operator increased the material feed rate to raise the glass level in the furnace at 3:35 AM.
+
+### Manual Temperature Reduction by Furnace Operator
+- Due to the ribbon break, the operator at STUSBP01 manually increased the bath exit temperature by 5°C at 4:45 AM to stabilize and facilitate recovery of the ribbon formation process.
+
+### Furnace Stirrer Speed Increase
+- At 4:08 AM, following the automatic restart of the furnace stirrer, the operator manually increased the stirrer speed to 6 RPM to accelerate temperature recovery in the bath. 
 
         """,
     },
