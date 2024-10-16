@@ -254,7 +254,7 @@ load_css('css/styles.css')
 st.image("assets/images/talk2log_logo.png", width=200)
 st.write("**👋 Hi! I'm an AI tool that will help you transform complex log files into insightful and easy-to-understand narratives.**")
 st.write("This is a demo version of the tool, and it is designed to assist you in analyzing log files from industrial control systems.")
-st.write("To get started, select a sample log file from the sidebar and click the **Analyze the log** button.")
+st.write("To get started, select one of the **4** sample log files from the sidebar and click the **Analyze the log** to have this log analyzed.")
 
 # Sidebar for file and language selection
 st.sidebar.header("Get started")
