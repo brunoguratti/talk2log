@@ -87,8 +87,10 @@ def gen_summary_messages (selected_file, support_info):
     - Don't mention the log data directly in your narrative.
     - Translate all tags and variables from the log data into plain English using the dictionary of tags and use them in the narrative.
     - Bold all variables extracted from the log, such as machine names, operator names, actions, etc., except times and dates.
-    - Generate a narrative explaining the sequence of events described in the log data. Mention the time or period of significant events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc., without producing an overwhelming list of times.
-    - Focus on maintaining a fluid narrative that highlights the key actions, causes, and consequences while ensuring readability and understanding.
+    - Generate a narrative explaining the sequence of events described in the log data.
+    - Mention the time or period of significant events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc..
+    - Avoid at all cost producing an overwhelming list of times.
+    - Focus on maintaining a fluid narrative that highlights the key actions and consequences while ensuring readability and understanding.
     - Combine related events where possible, and balance the frequency of time mentions to avoid disrupting the flow.
     - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
 
