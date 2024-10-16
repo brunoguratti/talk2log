@@ -88,7 +88,6 @@ def gen_summary_messages (selected_file, support_info):
     - Translate all tags and variables from the log data into plain English using the dictionary of tags and use them in the narrative.
     - Bold all variables extracted from the log, such as machine names, operator names, actions, etc.
     - Mention the time or period of significant events, such as 'During the night shift on [date]', 'At 10:30 AM', '45 minutes later', etc..
-    - Avoid at all cost producing an overwhelming list of times without a fluid narrative.
     - DO NOT make any assumptions, comments or conclusions about the events, such as: "indicating "This may have caused...", "This could have led to...", "This might have been due to...", etc.
 
     Structure of the Narrative:
