@@ -20,7 +20,7 @@ qdrant_api = st.secrets["qdrant_api_key"]
 openai_key=st.secrets["openai_api_key"]
 
 # Set the page configuration
-st.set_page_config(page_title="talk2log :: turning data into dialogue", page_icon="assets/images/favicon.ico")
+st.set_page_config(page_title="talk2log :: turning data into dialogue", layoyt = "wide", page_icon="assets/images/favicon.ico")
 
 ##-- Settings for embedding
 tag_descriptions = pd.read_csv('docs/tag_descriptions.csv')
